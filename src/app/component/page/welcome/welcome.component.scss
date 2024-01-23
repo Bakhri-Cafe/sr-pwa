@@ -1,0 +1,18 @@
+$border-radious :5px;
+
+.blog-group {
+    .header-wrapper {
+        border: 1.5px solid var(--sr-primary);
+        border-radius: $border-radious ;
+
+        .header {
+            background-color: var(--sr-primary);
+            padding: 1px 0px;
+
+            h5 {
+                color: var(--sr-primary-bg-subtle);
+                text-align: center;
+            }
+        }
+    }
+}

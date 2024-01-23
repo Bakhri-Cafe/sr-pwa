@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <sr-blog-group [blogs]="blogs" [blogType]="_blogType" />
+            <div class="pagination-wrapper mt-2">
+                <sr-pagination (getDataEmitter)="getDataEmitterHandler($event)" [currentPage]='pagination.currentPage' [totalRecord]='pagination.totalRecord' />
+            </div>
+        </div>
+        <div class="col">
+            this is sidebar
+        </div>
+    </div>
+</div>

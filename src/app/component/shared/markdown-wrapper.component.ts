@@ -1,0 +1,17 @@
+import { Component, Input } from '@angular/core';
+import { MarkdownComponent, provideMarkdown } from 'ngx-markdown';
+
+@Component({
+  selector: 'markdown-wrapper',
+  standalone: true,
+  imports: [MarkdownComponent],
+  template: `
+      <markdown emoji katex [data]="data"/> 
+  `,
+  providers: [
+    provideMarkdown(),
+  ],
+})
+export class MarkdownWrapperComponent {
+  @Input() data!: string;
+}

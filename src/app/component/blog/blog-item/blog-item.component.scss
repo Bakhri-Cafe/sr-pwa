@@ -1,0 +1,14 @@
+$blog-bg : #fff;
+@media screen and (min-width: 576px) {
+    .blog-item {
+        border: 1px solid $blog-bg;
+
+        &:hover {
+            box-shadow: var(--sr-box-shadow-lg);
+            background-color: darken($color: $blog-bg, $amount: 4%);
+            border-radius: 5px;
+            border: 1px solid darken($color: $blog-bg, $amount: 6%);
+            cursor: pointer;
+        }
+    }
+}
