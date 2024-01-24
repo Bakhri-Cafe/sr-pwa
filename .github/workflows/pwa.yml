@@ -29,7 +29,4 @@ jobs:
     - run: npm ci
     - run: npm run build
     # - run: npm test
-    # - run: npm start
-    # - run: serve:ssr:pwa
-    # - run: pm2 start serve:ssr:pwa
     - run: pm2 start "npm run serve:ssr:pwa" --name "pwa"
