@@ -31,4 +31,5 @@ jobs:
     # - run: npm test
     # - run: npm start
     # - run: serve:ssr:pwa
-    - run: pm2 start serve:ssr:pwa
+    # - run: pm2 start serve:ssr:pwa
+    - run: pm2 start "node dist/modernamediaangular/server/main.js" --name "modernamedia"
