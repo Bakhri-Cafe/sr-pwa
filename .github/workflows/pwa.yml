@@ -29,5 +29,5 @@ jobs:
     - run: npm ci
     - run: sudo npm install pm2 -g
     - run: npm run build
-    - run: pm2 start "node ./dist/pwa/server/server.mjs" --name "server"
+    - run: pm2 restart sr-pwa
     
