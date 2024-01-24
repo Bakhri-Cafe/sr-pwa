@@ -28,10 +28,5 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
-
-    # Add the pm2 script here
-    - name: Start pm2 server
-      run: |
-        npm install -g pm2
-        pm2 start npm --name "serve:ssr:pwa" -- run serve:ssr:pwa
+    - run: npm run serve:ssr:pwa
     
