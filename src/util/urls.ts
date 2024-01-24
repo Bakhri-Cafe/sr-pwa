@@ -1,4 +1,4 @@
-const BaseUrl = 'http://localhost:4000';
+const BaseUrl = 'http://178.16.137.29:3000';
 // const BaseUrl = 'http://localhost:5000';
 
 export const blogPath = `${BaseUrl}/blog`;
