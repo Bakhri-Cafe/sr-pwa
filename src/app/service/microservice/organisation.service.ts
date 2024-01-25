@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBlog, IOrganisation, IPagination } from '../../../util/dataModel';
-import { blogPath, organisationPath } from '../../../util/urls';
+import {  IOrganisation } from '../../../util/dataModel';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,10 @@ import { blogPath, organisationPath } from '../../../util/urls';
 export class OrganisationService {
   constructor(private http: HttpClient) { }
   getAll() {
-    return this.http.get<IOrganisation[]>(`${organisationPath}`)
+    return this.http.get<IOrganisation[]>(`${environment.organisationPath}`)
   }
 
   get(organisationId: string): Observable<IOrganisation> {
-    return this.http.get<IOrganisation>(`${organisationPath}/${organisationId}`);
+    return this.http.get<IOrganisation>(`${environment.organisationPath}/${organisationId}`);
   }
 }
