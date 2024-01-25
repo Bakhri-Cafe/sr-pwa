@@ -32,3 +32,6 @@ jobs:
     
     - run: pm2 start "node ./dist/pwa/server/server.mjs" --name "sr-pwa"
     - run: pm2 list
+
+
+  
