@@ -7,6 +7,7 @@ import { OrganisationPageComponent } from './component/page/organisation-page/or
 import path from 'path';
 import { OrganisationListComponent } from './component/organisation/organisation-list/organisation-list.component';
 import { OrganisationDetailComponent } from './component/organisation/organisation-detail/organisation-detail.component';
+import { NotFoundComponent } from './component/page/not-found/not-found.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -16,7 +17,8 @@ export const routes: Routes = [
     {
         path: 'organisations', component: OrganisationPageComponent, children: [
             { path: '', resolve: { organisations: organisationsResolver }, component: OrganisationListComponent, pathMatch: 'full' },
-            { path: 'details/:_id', resolve:{organisation: organisationResolver}, component: OrganisationDetailComponent }
+            { path: 'details/:_id', resolve: { organisation: organisationResolver }, component: OrganisationDetailComponent }
         ]
-    }
+    },
+    { path: '**', component: NotFoundComponent }
 ];
