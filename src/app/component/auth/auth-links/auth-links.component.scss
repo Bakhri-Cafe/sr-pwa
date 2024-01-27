@@ -1,0 +1,12 @@
+.btn-group{
+    .btn{
+        border-radius: 0;
+    }
+    border-radius: 5px;
+    .border-left-corner{
+        border-radius: 0 0 0 1rem;
+    }
+    .border-right-corner{
+        border-radius: 0 0 1rem 0;
+    }
+}

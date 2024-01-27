@@ -1,0 +1,17 @@
+<div class="btn-group w-100 mt-4">
+    @if (pageName==='/auth') {
+    <a routerLink="/auth/signup" class="btn btn-success active border-left-corner" aria-current="page">Sign Up</a>
+    <a routerLink="/auth/forgot-password" class="btn btn-danger border-right-corner">Forgot Password</a>
+    }
+    @else if (pageName==='/auth/signup') {
+    <a routerLink="/auth" class="btn btn-primary border-left-corner">Sign In</a>
+    <a routerLink="/auth/forgot-password" class="btn btn-danger border-right-corner">Forgot Password</a>
+    }@else if(pageName==='/auth/forgot-password'){
+    <a routerLink="/auth" class="btn btn-primary border-left-corner">Sign In</a>
+    <a routerLink="/auth/signup" class="btn btn-success active border-right-corner" aria-current="page">Sign Up</a>
+    }@else {
+    <a routerLink="/auth" class="btn btn-primary border-left-corner">Sign In</a>
+    <a routerLink="/auth/signup" class="btn btn-success active" aria-current="page">Sign Up</a>
+    <a routerLink="/auth/forgot-password" class="btn btn-danger border-right-corner">Forgot Password</a>
+    }
+</div>

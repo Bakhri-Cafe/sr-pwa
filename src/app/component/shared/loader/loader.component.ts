@@ -1,5 +1,6 @@
 import { NgIf, NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { addPer } from '../../../../util/transform';
 
 @Component({
   selector: 'sr-loader',
@@ -13,7 +14,4 @@ export class LoaderComponent {
   @Input() loading: boolean = false;
   @Input({ transform: addPer }) loadingPercentage: string = '0vw';
 
-}
-function addPer(value: string) {
-  return `${value}vw`
 }
