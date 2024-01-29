@@ -43,17 +43,23 @@ export interface IOrganisation extends baseInterface {
 export interface IUser {
     // type: Schema.Types.ObjectId
     name: {
-      first: string;
-      middle: string;
-      last: string;
+        first: string;
+        middle: string;
+        last: string;
     };
     avatar: IFile;
     dob: Date;
     gender?: 'male' | 'female';
     credential: Icredential;
-  }
-  
-  export interface Icredential {
+}
+
+export interface Icredential {
     username: string;
     password: string;
-  }
+}
+export interface IBrowserStorage {
+    set(key: string, value: string): void
+    get(key: string): string | null
+    remove(key: string): void
+    clear(): void
+}
