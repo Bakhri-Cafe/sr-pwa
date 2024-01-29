@@ -32,3 +32,28 @@ export interface IPagination {
     currentPage: number;
     totalRecord: number;
 }
+
+export interface IOrganisation extends baseInterface {
+    name: string;
+    logo?: IFile;
+    description?: string
+    markdown: string;
+}
+
+export interface IUser {
+    // type: Schema.Types.ObjectId
+    name: {
+      first: string;
+      middle: string;
+      last: string;
+    };
+    avatar: IFile;
+    dob: Date;
+    gender?: 'male' | 'female';
+    credential: Icredential;
+  }
+  
+  export interface Icredential {
+    username: string;
+    password: string;
+  }
