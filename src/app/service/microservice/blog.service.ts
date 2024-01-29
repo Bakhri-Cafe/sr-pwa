@@ -11,7 +11,6 @@ export class BlogService {
   getAll(filterCriteria: string): Observable<{ blogs: IBlog[], pagination: IPagination }> {
     return this.http.get<{ blogs: IBlog[], pagination: IPagination }>(`${environment.blogPath}?${filterCriteria}`);
   }
-
   get(blogId :  string): Observable<IBlog> {
     return this.http.get<IBlog>(`${environment.blogPath}/${blogId}`);
   }
