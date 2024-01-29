@@ -59,4 +59,4 @@ export class srBrowserStorage {
     clear(): void {
         this.iBrowserStorage.clear();
     }
-}
+}  
