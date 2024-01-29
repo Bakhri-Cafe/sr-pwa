@@ -13,7 +13,7 @@ import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './component/auth/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './component/auth/change-password/change-password.component';
 import { AdminPageComponent } from './component/page/admin-page/admin-page.component';
-import { authGuard, noAuthGuard } from '../util/auth-guard.guard';
+import { authGuard, noAuthChildrenGuard, noAuthGuard } from '../util/auth-guard.guard';
 
 
 export const routes: Routes = [
@@ -28,11 +28,11 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'auth', component: AuthPageComponent, children: [
-            { path: '', pathMatch: 'full', canActivate: [noAuthGuard], component: SignInComponent },
-            { path: 'signup', component: SignUpComponent, canActivate: [noAuthGuard], },
-            { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [noAuthGuard], },
-            { path: 'change-password', component: ChangePasswordComponent, canActivate: [noAuthGuard], },
+        path: 'auth', component: AuthPageComponent, canActivateChild: [noAuthChildrenGuard], children: [
+            { path: '', pathMatch: 'full',  component: SignInComponent },
+            { path: 'signup', component: SignUpComponent },
+            { path: 'forgot-password', component: ForgotPasswordComponent },
+            { path: 'change-password', component: ChangePasswordComponent },
         ]
     },
     { path: 'admin', component: AdminPageComponent, canActivate: [authGuard] },
