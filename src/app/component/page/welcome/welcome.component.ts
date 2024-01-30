@@ -20,6 +20,5 @@ export class WelcomeComponent {
         this.admitCards = blogs[1].blogs
         this.latestJobs = blogs[2].blogs
       });
-      console.log(this.result, this.admitCards, this.latestJobs)
   }
 }

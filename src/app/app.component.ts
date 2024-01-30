@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, afterRender } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './component/navigation/header/header.component';
@@ -17,7 +17,14 @@ import { UserService } from './service/microservice/user.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {
+    afterRender(() => {
+      const localBrowserStorage = new srBrowserStorage(this.lStorage);
+      const sessionBrowserStorage = new srBrowserStorage(this.sStorage);
+      let AuthUser = sessionBrowserStorage.get('auth') || localBrowserStorage.get('auth');
+      this.userService.setAuthSubject(JSON.parse(AuthUser || ''));
+    })
+  }
   sStorage = new SRSessionStorage();
   lStorage = new SRLocalStorage();
   authUser: { data: IUser, token: string } | null = null;
@@ -37,14 +44,8 @@ export class AppComponent {
           }
         })
       )
-      .subscribe(() => {
+      .subscribe((event) => {
         this.loadingPercentage = Math.floor(Number(this.loadingPercentage.split('vw')[0]) + (100 / 11)).toString()
       });
-    const localBrowserStorage = new srBrowserStorage(this.lStorage);
-    const sessionBrowserStorage = new srBrowserStorage(this.sStorage);
-
-    let AuthUser = localBrowserStorage.get('auth') || sessionBrowserStorage.get('auth');
-    this.userService.setAuthSubject(JSON.parse(AuthUser || ''));
-
   }
 }

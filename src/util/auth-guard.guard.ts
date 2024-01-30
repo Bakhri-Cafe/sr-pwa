@@ -16,9 +16,20 @@ export const authGuard: CanActivateFn = (route, state) => {
 };
 
 export const noAuthGuard: CanActivateFn = (route, state) => {
-  return !authGuard(route, state);
+  const userService = inject(UserService)
+  const router = inject(Router)
+  let isLoggedIn: boolean = false
+  if (userService.isLoggedIn$) {
+    userService.isLoggedIn$.subscribe(res => isLoggedIn = res);
+  }
+  if (isLoggedIn) {
+    router.navigate(['admin']);
+  }
+  return !isLoggedIn;
 };
 
 export const noAuthChildrenGuard: CanActivateChildFn = (route, state) => {
   return noAuthGuard(route, state);
 };
+
+

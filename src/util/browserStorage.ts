@@ -1,41 +1,41 @@
 import { IBrowserStorage } from "./dataModel";
 
-
 export class SRLocalStorage implements IBrowserStorage {
-    constructor() { }
+   
     set(key: string, value: string): void {
-        localStorage.setItem(key, value);
+            localStorage.setItem(key, value);
     }
 
     get(key: string): string | null {
-        return localStorage.getItem(key);
+            return localStorage.getItem(key);
     }
 
     remove(key: string): void {
-        localStorage.removeItem(key);
+            localStorage.removeItem(key);
     }
 
     clear(): void {
-        localStorage.clear();
+            localStorage.clear();
     }
 
 }
 
 export class SRSessionStorage implements IBrowserStorage {
+    
     set(key: string, value: string): void {
-        sessionStorage.setItem(key, value);
+            sessionStorage.setItem(key, value);
     }
 
     get(key: string): string | null {
-        return sessionStorage.getItem(key);
+            return sessionStorage.getItem(key)
     }
 
     remove(key: string): void {
-        sessionStorage.removeItem(key);
+            sessionStorage.removeItem(key);
     }
 
     clear(): void {
-        sessionStorage.clear();
+            sessionStorage.clear();
     }
 }
 
