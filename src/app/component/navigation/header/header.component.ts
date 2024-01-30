@@ -3,13 +3,13 @@ import { RouterLink } from '@angular/router';
 import { AppService } from '../../../appService/app.service';
 import { UserService } from '../../../service/microservice/user.service';
 import { IUser } from '../../../../util/dataModel';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { AvatarComponent } from '../../shared/avatar/avatar.component';
 
 @Component({
   selector: 'sr-header',
   standalone: true,
-  imports: [RouterLink, NgIf, AvatarComponent],
+  imports: [RouterLink, NgIf, AvatarComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

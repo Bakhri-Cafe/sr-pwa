@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivationEnd, ActivationStart, GuardsCheckEnd, GuardsCheckStart, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouterEvent, RouterOutlet, RoutesRecognized } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './component/navigation/header/header.component';
 import { FooterComponent } from './component/navigation/footer.component';
-import { Observable, filter, map, of } from 'rxjs';
+import { map } from 'rxjs';
 import { LoaderComponent } from './component/shared/loader/loader.component';
+import { SRLocalStorage, SRSessionStorage, srBrowserStorage } from '../util/browserStorage';
+import { IUser } from '../util/dataModel';
+import { UserService } from './service/microservice/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,10 @@ import { LoaderComponent } from './component/shared/loader/loader.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
+  sStorage = new SRSessionStorage();
+  lStorage = new SRLocalStorage();
+  authUser: { data: IUser, token: string } | null = null;
   loading: boolean = false;
   loadingPercentage: string = '0vw';
   ngOnInit() {
@@ -34,5 +40,11 @@ export class AppComponent {
       .subscribe(() => {
         this.loadingPercentage = Math.floor(Number(this.loadingPercentage.split('vw')[0]) + (100 / 11)).toString()
       });
+    const localBrowserStorage = new srBrowserStorage(this.lStorage);
+    const sessionBrowserStorage = new srBrowserStorage(this.sStorage);
+
+    let AuthUser = localBrowserStorage.get('auth') || sessionBrowserStorage.get('auth');
+    this.userService.setAuthSubject(JSON.parse(AuthUser || ''));
+
   }
 }

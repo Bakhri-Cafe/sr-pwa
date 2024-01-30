@@ -5,19 +5,27 @@ import { UserService } from '../app/service/microservice/user.service';
 export const authGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService)
   const router = inject(Router)
-  if (!userService.isLoggedIn) {
+  let isLoggedIn: boolean = false
+  if (userService.isLoggedIn$) {
+    userService.isLoggedIn$.subscribe(res => isLoggedIn = res);
+  }
+  if (!isLoggedIn) {
     router.navigate(['auth']);
   }
-  return !!userService.isLoggedIn;
+  return !!isLoggedIn;
 };
 
 export const noAuthGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService)
+  if (userService.isLoggedIn$) {
+    userService.isLoggedIn$.subscribe(res => isLoggedIn = res);
+  }
+  let isLoggedIn: boolean = false
   const router = inject(Router)
-  if (!!userService.isLoggedIn) {
+  if (!!isLoggedIn) {
     router.navigate(['admin']);
   }
-  return !userService.isLoggedIn;
+  return !isLoggedIn;
 };
 
 export const noAuthChildrenGuard: CanActivateChildFn = (route, state) => {
