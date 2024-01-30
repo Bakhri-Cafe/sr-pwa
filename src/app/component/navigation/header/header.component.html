@@ -34,28 +34,55 @@
           </li>
         </ul>
 
-        <div class="d-flex navbar-text nav-item dropdown">
-          @if (userService.isLoggedIn$ | async) {
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        @if (userService.isLoggedIn$ | async) {
+        <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <sr-avatar [avatar]="auth.data.avatar" /> {{fullanme()}}</a>
-
-          <ul class="dropdown-menu text-bg-dark">
-            <div>
-              <sr-avatar [avatar]="auth.data.avatar" />
-              {{fullanme()}}
+            
+            <div class="dropdown-menu dropdown-menu-md-start ">
+              <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                  <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                </div>
+                <div class="single_advisor_details_info">
+                <h6>Nazrul Islam</h6>
+                <p class="designation">UI Designer</p>
+              </div>
             </div>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </div> -->
+
+
+
+        <div class="navbar-text nav-item dropdown">
+          <a href="#" role="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <sr-avatar [avatar]="auth.data.avatar" />{{fullanme()}}
+          </a>
+          <ul class="dropdown-menu">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s"
+              style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+              <div class="advisor_thumb"><img [src]="auth.data.avatar.path" alt="">
+                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
+                      class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+              </div>
+              <div class="single_advisor_details_info">
+                <h6>{{fullanme()}}</h6>
+                <p class="designation">UI Designer</p>
+              </div>
+            </div>
           </ul>
-          }@else{
-          <a routerLink="auth" class="link-light link-offset-3">Login/
-            Register</a>
-          }
         </div>
+
+
+
+
+
+
+
+
+
+        }@else{
+        <a routerLink="auth" class="link-light link-offset-3">Login/
+          Register</a>
+        }
       </div>
     </div>
   </div>

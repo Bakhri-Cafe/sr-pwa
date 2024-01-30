@@ -28,8 +28,8 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'auth', component: AuthPageComponent, canActivateChild: [noAuthChildrenGuard], children: [
-            { path: '', pathMatch: 'full', component: SignInComponent },
+        path: 'auth', component: AuthPageComponent, canActivateChild:[noAuthChildrenGuard],  children: [
+            { path: '', pathMatch: 'full', component: SignInComponent},
             { path: 'signup', component: SignUpComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
             { path: 'change-password', component: ChangePasswordComponent },

@@ -2,6 +2,7 @@ import { IBrowserStorage } from "./dataModel";
 
 
 export class SRLocalStorage implements IBrowserStorage {
+    constructor() { }
     set(key: string, value: string): void {
         localStorage.setItem(key, value);
     }
