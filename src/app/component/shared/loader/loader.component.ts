@@ -12,6 +12,6 @@ import { addPer } from '../../../../util/transform';
 export class LoaderComponent {
 
   @Input() loading: boolean = false;
-  @Input({ transform: addPer }) loadingPercentage: string = '0vw';
+  @Input({ transform: addPer }) loadingPercentage: string='';
 
 }

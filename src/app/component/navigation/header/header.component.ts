@@ -3,14 +3,14 @@ import { RouterLink } from '@angular/router';
 import { AppService } from '../../../appService/app.service';
 import { UserService } from '../../../service/microservice/user.service';
 import { IUser } from '../../../../util/dataModel';
-import { CommonModule, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { AvatarComponent } from '../../shared/avatar/avatar.component';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 
 @Component({
   selector: 'sr-header',
   standalone: true,
-  imports: [RouterLink, NgIf, AvatarComponent, CommonModule, ProfileCardComponent],
+  imports: [RouterLink, NgIf, AvatarComponent, AsyncPipe, ProfileCardComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

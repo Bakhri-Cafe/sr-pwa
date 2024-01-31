@@ -1,0 +1,14 @@
+textarea {
+    resize: none;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    overflow: visible;
+}
+
+textarea:invalid {
+    border: 2px dashed red;
+}
+
+textarea:valid {
+    border: 2px solid lime;
+}

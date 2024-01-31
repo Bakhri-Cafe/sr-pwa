@@ -13,7 +13,9 @@ import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './component/auth/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './component/auth/change-password/change-password.component';
 import { AdminPageComponent } from './component/page/admin-page/admin-page.component';
-import { authGuard, noAuthChildrenGuard, noAuthGuard } from '../util/auth-guard.guard';
+import { authChildrenGuard, noAuthChildrenGuard } from '../util/auth-guard.guard';
+import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { CreateBlogComponent } from './component/admin/create-blog/create-blog.component';
 
 
 export const routes: Routes = [
@@ -28,13 +30,22 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'auth', component: AuthPageComponent, canActivateChild:[noAuthChildrenGuard],  children: [
-            { path: '', pathMatch: 'full', component: SignInComponent},
+        path: 'auth', component: AuthPageComponent, canActivateChild: [noAuthChildrenGuard], children: [
+            { path: '', pathMatch: 'full', component: SignInComponent },
             { path: 'signup', component: SignUpComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
             { path: 'change-password', component: ChangePasswordComponent },
         ]
     },
-    { path: 'admin', component: AdminPageComponent, canActivate: [authGuard] },
+    {
+        path: 'admin', component: AdminPageComponent, canActivateChild: [authChildrenGuard], children: [
+            { path: '', component: DashboardComponent, pathMatch: 'full' },
+            { path: 'blogs-list', resolve: { blogs: WelcomeResolver }, component: WelcomeComponent },
+            { path: 'blogs-list/blogs/:blogType', resolve: { blogs: blogsResolver }, component: BlogsComponent },
+            { path: 'blogs/create',  component: CreateBlogComponent },
+            { path: 'blogs-list/blogs/blog/:id', resolve: { blog: blogResolver }, component: CreateBlogComponent },
+            { path: 'blogs-list/blogs/:blogType/blogs/blog/:id', redirectTo:'blogs-list/blogs/blog/:id' },
+        ]
+    },
     { path: '**', component: NotFoundComponent }
 ];

@@ -41,12 +41,13 @@
             <sr-avatar [avatar]="auth.data.avatar" />{{fullanme()}}
           </a>
           <div class="dropdown-menu">
-            <sr-profile-card [authUser]="auth.data"/>
+            <sr-profile-card [authUser]="auth.data" />
           </div>
         </div>
 
         }@else{
-        <a routerLink="auth" class="link-light link-offset-3">Login/ Register</a>
+        <a routerLink="auth" class="link-light link-offset-3">Login/
+          Register</a>
         }
       </div>
     </div>

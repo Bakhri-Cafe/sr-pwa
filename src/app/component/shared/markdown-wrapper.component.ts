@@ -6,7 +6,7 @@ import { MarkdownComponent, provideMarkdown } from 'ngx-markdown';
   standalone: true,
   imports: [MarkdownComponent],
   template: `
-      <markdown emoji katex [data]="data"/> a
+      <markdown emoji katex [data]="data"/>
   `,
   providers: [
     provideMarkdown(),

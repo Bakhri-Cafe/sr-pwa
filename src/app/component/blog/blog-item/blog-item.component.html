@@ -1,9 +1,9 @@
-<div class="text-body-secondary pt-2 blog-item" [routerLink]="['/welcome/blogs/blog/', blog._id]">
+<div class="text-body-secondary pt-2 blog-item" [routerLink]="['blogs/blog/', blog._id]">
     <div class="d-flex">
-        <sr-avatar [avatar]="blog.organisation.logo"/>
+        <sr-avatar [avatar]="blog.organisation.logo" />
         <p class="pb-3 mb-0 small lh-sm border-bottom">
             <strong class="d-block text-gray-dark">{{blog.title}}</strong>
-            {{blog.description}}
+            {{blog.description | charLimit : 40}}
         </p>
     </div>
 </div>

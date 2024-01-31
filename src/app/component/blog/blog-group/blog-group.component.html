@@ -1,6 +1,6 @@
 <main class="container-flex blog-group mb-sm-2 mb-md-0">
     <div class="p-sm-3 bg-body rounded shadow-sm-lg">
-        <h6 class="border-bottom pb-2 mb-0 blog-group_header" [routerLink]="['/welcome/blogs', blogType]">{{blogType}}
+        <h6 class="border-bottom pb-2 mb-0 blog-group_header" [routerLink]="['blogs', blogType]">{{blogType}}
         </h6>
         <sr-blog-item *ngFor="let blogItem of blogs" [blog]="blogItem"></sr-blog-item>
     </div>

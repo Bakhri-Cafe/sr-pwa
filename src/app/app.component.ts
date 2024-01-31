@@ -19,33 +19,30 @@ import { UserService } from './service/microservice/user.service';
 export class AppComponent {
   constructor(private router: Router, private userService: UserService) {
     afterRender(() => {
-      const localBrowserStorage = new srBrowserStorage(this.lStorage);
-      const sessionBrowserStorage = new srBrowserStorage(this.sStorage);
+      const sStorage = new SRSessionStorage();
+      const lStorage = new SRLocalStorage();
+      const localBrowserStorage = new srBrowserStorage(lStorage);
+      const sessionBrowserStorage = new srBrowserStorage(sStorage);
       let AuthUser = sessionBrowserStorage.get('auth') || localBrowserStorage.get('auth');
       this.userService.setAuthSubject(JSON.parse(AuthUser || ''));
     })
   }
-  sStorage = new SRSessionStorage();
-  lStorage = new SRLocalStorage();
+
   authUser: { data: IUser, token: string } | null = null;
   loading: boolean = false;
-  loadingPercentage: string = '0vw';
+  loadingPercentage: number = 0;
   ngOnInit() {
     this.router.events
       .pipe(
         map((e) => {
-          if (e instanceof NavigationStart) {
+          if ( e instanceof NavigationStart || e instanceof NavigationEnd) {
             this.loading = true;
-            this.loadingPercentage = '0vw';
-          }
-          if (e instanceof NavigationEnd) {
-            this.loading = false;
-            this.loadingPercentage = '0vw';
+            this.loadingPercentage = 0;
           }
         })
       )
-      .subscribe((event) => {
-        this.loadingPercentage = Math.floor(Number(this.loadingPercentage.split('vw')[0]) + (100 / 11)).toString()
+      .subscribe(() => {
+        this.loadingPercentage = Math.floor(this.loadingPercentage + (100 / 11))
       });
   }
 }

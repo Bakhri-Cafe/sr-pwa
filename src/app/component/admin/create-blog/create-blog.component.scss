@@ -1,0 +1,14 @@
+.create-blog{
+    textarea{
+        overflow: hidden;
+        resize: none;
+        min-height: 500px;
+        width: 100%;
+        background-color: darkslategray;
+        color: wheat;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
