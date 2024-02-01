@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[srResizablefield]',
@@ -6,8 +6,8 @@ import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 })
 export class ResizableTextareaDirective implements OnInit {
 
+  @Input() srResizablefield = 0;
   constructor(private elementRef: ElementRef) { }
-
   @HostListener(':input')
   onInput() {
     this.resize();
@@ -15,7 +15,7 @@ export class ResizableTextareaDirective implements OnInit {
 
   ngOnInit() {
     if (this.elementRef.nativeElement.scrollHeight) {
-      setTimeout(() => this.resize());
+      setTimeout(() => this.elementRef.nativeElement.style.height = this.srResizablefield + 'px');
     }
   }
 

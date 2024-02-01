@@ -1,27 +1,104 @@
-<div class="container-flex create-blog" [formGroup]="blogForm">
+<form class="container-flex create-blog" [formGroup]="blogForm">
     <div class="d-flex justify-content-end">
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <div class="btn-group btn-group-sm py-2" role="group" aria-label="Basic mixed styles example">
             @if (edit) {
             <button type="button" (click)="toggleEdit()" class="btn btn-warning">Preview</button>
             }@else {
             <button type="button" (click)="toggleEdit()" class="btn btn-danger">Edit</button>
             }
-            <button type="button" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-success" (click)="postBlog()">Save</button>
         </div>
     </div>
-    <div class="row">
-        <input type="text" formControlName='title'>
+    <div class="form-floating">
+        <input type="text" formControlName='title' class="form-control mb-1" id="title" placeholder="name@example.com">
+        <label for="title">Title</label>
     </div>
+    <div class="form-container">
+
+        <div class="form-floating me-lg-1 col-md-6">
+            <select class="form-control mb-1 form-select" id="type">
+                <option selected disabled>Choose type...</option>
+                <option>...</option>
+            </select>
+            <label for="type">Type</label>
+        </div>
+
+        <div class="form-floating ms-lg-1 col-md-6">
+            <select class="form-control mb-1 form-select" id="organisation">
+                <option selected disabled>Choose organisation...</option>
+                <option>...</option>
+            </select>
+            <label for="organisation">Organisation</label>
+        </div>
+    </div>
+
+    <div class="form-floating">
+        <textarea rows="10" id="markdown" [placeholder]="markdownPlaceholder" class="form-control mb-1"
+            [srResizablefield]="400" formControlName='markdown'></textarea>
+        <!-- <input type="text" formControlName='title' class="form-control mb-1" id="title" placeholder="name@example.com"> -->
+        <label for="markdown">Markdown</label>
+    </div>
+    <!-- <input class="form-control" type="text" formControlName='title'> -->
+    <!-- </div> -->
     <!-- <div class="row">
         <input type="text">
     </div> -->
-    <div class="row txt">
+    <!-- <div class="row txt">
         <div class="col">
             @if (edit) {
-            <textarea srResizablefield formControlName='markdown'></textarea>
             }@else{
             <markdown-wrapper [data]="blogForm.value.markdown" />
             }
         </div>
+    </div> -->
+</form>
+
+
+<!--
+
+<form class="row g-3">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4">
     </div>
-</div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </form>
+
+-->
