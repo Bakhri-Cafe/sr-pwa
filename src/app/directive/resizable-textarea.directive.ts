@@ -14,13 +14,16 @@ export class ResizableTextareaDirective implements OnInit {
   }
 
   ngOnInit() {
-    if (this.elementRef.nativeElement.scrollHeight) {
-      setTimeout(() => this.elementRef.nativeElement.style.height = this.srResizablefield + 'px');
-    }
+    this.resize()
   }
 
   resize() {
-    this.elementRef.nativeElement.style.height = '0';
-    this.elementRef.nativeElement.style.height = this.elementRef.nativeElement.scrollHeight + 'px';
+    const elementScrollHeight = this.elementRef.nativeElement.scrollHeight
+    if (elementScrollHeight < this.srResizablefield) {
+
+      this.elementRef.nativeElement.style.height = this.srResizablefield + 'px';
+    } else {
+      this.elementRef.nativeElement.style.height = this.elementRef.nativeElement.scrollHeight + 'px';
+    }
   }
 }

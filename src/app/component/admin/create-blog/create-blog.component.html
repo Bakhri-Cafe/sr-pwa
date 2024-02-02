@@ -1,104 +1,60 @@
-<form class="container-flex create-blog" [formGroup]="blogForm">
-    <div class="d-flex justify-content-end">
-        <div class="btn-group btn-group-sm py-2" role="group" aria-label="Basic mixed styles example">
-            @if (edit) {
-            <button type="button" (click)="toggleEdit()" class="btn btn-warning">Preview</button>
-            }@else {
-            <button type="button" (click)="toggleEdit()" class="btn btn-danger">Edit</button>
-            }
-            <button type="button" class="btn btn-success" (click)="postBlog()">Save</button>
-        </div>
-    </div>
-    <div class="form-floating">
-        <input type="text" formControlName='title' class="form-control mb-1" id="title" placeholder="name@example.com">
-        <label for="title">Title</label>
-    </div>
-    <div class="form-container">
+<form class="container-flex create-blog mt-1" [formGroup]="blogForm">
 
-        <div class="form-floating me-lg-1 col-md-6">
-            <select class="form-control mb-1 form-select" id="type">
-                <option selected disabled>Choose type...</option>
-                <option>...</option>
-            </select>
-            <label for="type">Type</label>
-        </div>
-
-        <div class="form-floating ms-lg-1 col-md-6">
-            <select class="form-control mb-1 form-select" id="organisation">
-                <option selected disabled>Choose organisation...</option>
-                <option>...</option>
-            </select>
-            <label for="organisation">Organisation</label>
-        </div>
-    </div>
-
-    <div class="form-floating">
-        <textarea rows="10" id="markdown" [placeholder]="markdownPlaceholder" class="form-control mb-1"
-            [srResizablefield]="400" formControlName='markdown'></textarea>
-        <!-- <input type="text" formControlName='title' class="form-control mb-1" id="title" placeholder="name@example.com"> -->
-        <label for="markdown">Markdown</label>
-    </div>
-    <!-- <input class="form-control" type="text" formControlName='title'> -->
-    <!-- </div> -->
-    <!-- <div class="row">
-        <input type="text">
-    </div> -->
-    <!-- <div class="row txt">
-        <div class="col">
-            @if (edit) {
-            }@else{
-            <markdown-wrapper [data]="blogForm.value.markdown" />
-            }
-        </div>
-    </div> -->
-</form>
-
-
-<!--
-
-<form class="row g-3">
+  <div class="form-floating">
+    <input formControlName="title" class="form-control mb-1" [id]="BLOG_CONSTANT.title.id"
+      [placeholder]="BLOG_CONSTANT.title.plaholder">
+    <label [for]="BLOG_CONSTANT.title.id">{{BLOG_CONSTANT.title.plaholder}}</label>
+  </div>
+  <div class="form-floating">
+    <textarea style="height: 100px;" [id]="BLOG_CONSTANT.description.id"
+      [placeholder]="BLOG_CONSTANT.description.plaholder" class="form-control mb-1"
+      formControlName='markdown'></textarea>
+    <label [for]="BLOG_CONSTANT.description.id">{{BLOG_CONSTANT.description.plaholder}}</label>
+  </div>
+  <div class="row mb-1">
     <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="col-md-6">
-      <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="col-md-4">
-      <label for="inputState" class="form-label">State</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
+      <div class="form-floating mb-1">
+        <select formControlName="organisation" formControlName="type" class="form-select"
+          [id]="BLOG_CONSTANT.organisation.id">
+          <option selected>{{BLOG_CONSTANT.organisation.plaholder}}</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label [for]="BLOG_CONSTANT.organisation.id">{{BLOG_CONSTANT.organisation.plaholder}}</label>
+      </div>
+      <div class="form-floating">
+        <select formControlName="organisation" formControlName="type" class="form-select" [id]="BLOG_CONSTANT.type.id">
+          <option selected>{{BLOG_CONSTANT.type.plaholder}}</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label [for]="BLOG_CONSTANT.type.id">{{BLOG_CONSTANT.type.plaholder}}</label>
       </div>
     </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class="col-md-6">
+      <sr-multi-select [c_id]="BLOG_CONSTANT.tag.id" [c_placeHolder]="BLOG_CONSTANT.tag.plaholder" />
     </div>
-  </form>
+  </div>
+  @if (edit) {
+  <div class="form-floating">
+    <textarea [id]="BLOG_CONSTANT.markdown.id" [placeholder]="BLOG_CONSTANT.markdown.plaholder"
+      class="form-control mb-1" [srResizablefield]="400" formControlName='markdown'></textarea>
+    <label [for]="BLOG_CONSTANT.markdown.id">{{BLOG_CONSTANT.markdown.plaholder}}</label>
+  </div>
+  }@else{
+  <markdown-wrapper [data]="blogForm.value.markdown" />
+  }
 
--->
+  <div class="d-flex justify-content-end">
+    <div class="btn-group btn-group-sm py-2" role="group" aria-label="Basic mixed styles example">
+      @if (edit) {
+      <button type="button" (click)="toggleEdit()" class="btn btn-warning">Preview</button>
+      }@else {
+      <button type="button" (click)="toggleEdit()" class="btn btn-danger">Edit</button>
+      }
+      <button type="button" class="btn btn-success" (click)="postBlog()">Save</button>
+    </div>
+  </div>
+</form>
