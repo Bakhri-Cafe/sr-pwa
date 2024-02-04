@@ -4,13 +4,13 @@ import { MarkdownWrapperComponent } from '../../shared/markdown-wrapper.componen
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogService } from '../../../service/microservice/blog.service';
 import { BLOG_CONSTANT } from '../../../../util/constants';
-import { MultiSelectComponent } from '../../shared/multi-select/multi-select.component';
 import { ActivatedRoute } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'sr-create-blog',
   standalone: true,
-  imports: [ResizableTextareaDirective, MultiSelectComponent, MarkdownWrapperComponent, ReactiveFormsModule],
+  imports: [ResizableTextareaDirective,JsonPipe, MarkdownWrapperComponent, ReactiveFormsModule],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
@@ -52,5 +52,8 @@ export class CreateBlogComponent {
   postBlog() {
     console.log('res')
     this.blogService.post(this.blogForm.value).subscribe(res => console.log('res', res))
+  }
+  charCount(text: string) {
+    return text.length
   }
 }
