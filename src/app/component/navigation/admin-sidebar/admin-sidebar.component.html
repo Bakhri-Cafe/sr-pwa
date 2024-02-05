@@ -7,57 +7,63 @@
         Dashboard
       </a>
     </li>
+  </ul>
+
+  <h6
+    class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+    <span>Blogs</span>
+    <a class="link-secondary" href="#" aria-label="Add a new report">
+    </a>
+  </h6>
+  <ul class="nav flex-column mb-auto">
     <li class="nav-item">
       <a class="nav-link d-flex align-items-center gap-2" [routerLink]="['blogs-list']" routerLinkActive="active-link">
-        Blogs
+        List
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" [routerLink]="['/admin/blogs/create']" routerLinkActive="active-link">
-        New Blog
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Customers
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Reports
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Integrations
+      <a class="nav-link d-flex align-items-center gap-2" [routerLink]="['/admin/blogs/create']"
+        routerLinkActive="active-link">
+        Create
       </a>
     </li>
   </ul>
+
+
   <h6
     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-    <span>Saved reports</span>
+    <span>Organisation</span>
     <a class="link-secondary" href="#" aria-label="Add a new report">
     </a>
   </h6>
   <ul class="nav flex-column mb-auto">
     <li class="nav-item">
       <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Current month
+        List
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Last quarter
+        Create
+      </a>
+    </li>
+  </ul>
+
+  <h6
+    class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+    <span>Types</span>
+    <a class="link-secondary" href="#" aria-label="Add a new report">
+    </a>
+  </h6>
+  <ul class="nav flex-column mb-auto">
+    <li class="nav-item">
+      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
+        List
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Social engagement
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Year-end sale
+        Create
       </a>
     </li>
   </ul>
@@ -65,11 +71,6 @@
   <hr class="my-3">
 
   <ul class="nav flex-column mb-auto">
-    <li class="nav-item">
-      <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
-        Settings
-      </a>
-    </li>
     <li class="nav-item">
       <a class="nav-link d-flex align-items-center gap-2" href="#" routerLinkActive="active-link">
         Sign out
