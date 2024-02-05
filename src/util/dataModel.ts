@@ -63,3 +63,35 @@ export interface IBrowserStorage {
     remove(key: string): void
     clear(): void
 }
+
+
+export type IInputType =
+    "button" |
+    "checkbox" |
+    "color" |
+    "date" |
+    "datetime-local" |
+    "email" |
+    "file" |
+    "hidden" |
+    "image" |
+    "month" |
+    "number" |
+    "password" |
+    "radio" |
+    "range" |
+    "reset" |
+    "search" |
+    "submit" |
+    "tel" |
+    "text" |
+    "time" |
+    "url" |
+    "week"
+
+export interface IFloatingInput {
+    placeholder: string,
+    id: string,
+    type: IInputType,
+    classes?: string
+}

@@ -32,6 +32,16 @@ export class UserService {
         })
       )
   }
+
+  signUp(name: string, username: string, password: string) {
+    return this.http.post<{ data: IUser, token: string }>(`${environment.userPath}/signup`, { username, password , name})
+      .pipe(
+        map((response) => {
+          this.setAuthSubject(response)
+          return response;
+        })
+      )
+  }
   setAuthSubject(response: { data: IUser, token: string }) {
     this.authSubject.next(response);
   }
