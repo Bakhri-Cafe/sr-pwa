@@ -1,0 +1,11 @@
+<sr-create-type />
+<div class="type">
+  @for (type of types; track type._id) {
+  <div class="header cursor-pointer" (click)="handleTypeClick(type._id)">
+    {{type.cat1}} - {{type.cat2}} - {{type.title}}
+  </div>
+  <div class="content" [ngClass]="type.classes">
+    {{type.description}}
+  </div>
+  }
+</div>

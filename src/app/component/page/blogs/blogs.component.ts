@@ -4,7 +4,7 @@ import { PaginationComponent } from '../../shared/pagination/pagination.componen
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { IBlog, IPagination } from '../../../../util/dataModel';
 import { BlogService } from '../../../service/microservice/blog.service';
-import { geterCriteria } from '../../../../util/resolver';
+import { getCriteria } from '../../../../util/resolver';
 
 @Component({
   selector: 'sr-blogs',
@@ -29,7 +29,7 @@ export class BlogsComponent {
     this.activatedRoute.paramMap.subscribe((r: any) => this._blogType = r.params['blogType'])
   }
   getDataEmitterHandler(pageNumber: number){
-    this.blogService.getAll(geterCriteria(this._blogType,pageNumber)).subscribe((res)=>{
+    this.blogService.getAll(getCriteria(this._blogType,pageNumber)).subscribe((res)=>{
       this.blogs= res.blogs
       this.pagination= res.pagination
     })

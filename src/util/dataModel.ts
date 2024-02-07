@@ -14,7 +14,13 @@ export interface IBlog extends baseInterface {
 export interface IType extends baseInterface {
     title: string;
     cat1: string;
+    cat2?: string;
     description: string;
+    
+}
+
+export interface IActiveType extends IType {
+    classes: string[]
 }
 export interface IOrganisation extends baseInterface {
     name: string;

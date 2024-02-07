@@ -4,7 +4,8 @@ export const environment = {
     production: true,
     blogPath: `${BaseUrl}/blog`,
     userPath: `${BaseUrl}/user`,
-    organisationPath: `${BaseUrl}/organisation`
+    organisationPath: `${BaseUrl}/organisation`,
+    typePath : `${BaseUrl}/type`
 };
 
 

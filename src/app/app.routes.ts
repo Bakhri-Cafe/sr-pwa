@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { WelcomeComponent } from './component/page/welcome/welcome.component';
 import { BlogsComponent } from './component/page/blogs/blogs.component';
-import { WelcomeResolver, blogResolver, blogsResolver, organisationResolver, organisationsResolver } from '../util/resolver';
+import { WelcomeResolver, blogResolver, blogsResolver, organisationResolver, organisationsResolver, typesResolver } from '../util/resolver';
 import { BlogDetailPageComponent } from './component/page/blog-detail-page/blog-detail-page.component';
 import { OrganisationPageComponent } from './component/page/organisation-page/organisation-page.component';
 import { OrganisationListComponent } from './component/organisation/organisation-list/organisation-list.component';
@@ -16,6 +16,7 @@ import { AdminPageComponent } from './component/page/admin-page/admin-page.compo
 import { authChildrenGuard, noAuthChildrenGuard } from '../util/auth-guard.guard';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
 import { CreateBlogComponent } from './component/admin/create-blog/create-blog.component';
+import { ListTypeComponent } from './component/type/list-type/list-type.component';
 
 
 export const routes: Routes = [
@@ -45,6 +46,8 @@ export const routes: Routes = [
             { path: 'blogs/create',  component: CreateBlogComponent },
             { path: 'blogs-list/blogs/blog/:id', resolve: { blog: blogResolver }, component: CreateBlogComponent },
             { path: 'blogs-list/blogs/:blogType/blogs/blog/:id', redirectTo:'blogs-list/blogs/blog/:id' },
+
+            {path:'type', component: ListTypeComponent,  resolve: { types: typesResolver }},
         ]
     },
     { path: '**', component: NotFoundComponent }
