@@ -1,5 +1,8 @@
-<div class="form-floating">
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-        style="height: 100px"></textarea>
-    <label for="floatingTextarea2">Comments</label>
+<div class="form-floating mb-1">
+    <textarea [maxlength]="CONSTANTS.maxChar !==0 ? CONSTANTS.maxChar : 1/0" [srResizablefield]="CONSTANTS.autoResize"
+        class="form-control" [ngClass]="CONSTANTS.classes" [formControl]="CONTROL" [id]="CONSTANTS.id"
+        [placeholder]="CONSTANTS.placeholder"></textarea>
+    <label [for]="CONSTANTS.id">{{CONSTANTS.placeholder}}
+        {{CONSTANTS.maxChar ===0 || CONSTANTS.maxChar === undefined  ? ' ( ' + CONTROL.value.length +' ) ' : 'Max char' + CONSTANTS.maxChar + ' ( ' + CONTROL.value.length +' ) '}}
+    </label>
 </div>

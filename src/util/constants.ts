@@ -1,21 +1,27 @@
-import { IFloatingInput } from "./dataModel"
+import { IFloatingInput, IFloatingTextarea } from "./dataModel"
 
 export const defaultAvatar = 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1151.jpg'
 
+const description: IFloatingTextarea = {
+    placeholder: 'Description...',
+    id: 'description',
+    autoResize: 50,
+    maxChar: 100
+}
+const markdown: IFloatingTextarea = {
+    placeholder: 'Markdown...',
+    id: 'markdown',
+    autoResize: 500,
+    maxChar: undefined
+}
 export const BLOG_CONSTANT = {
     title: {
         placeholder: 'Title ...',
         id: 'title',
         type: 'text'
     },
-    description: {
-        placeholder: 'Description max 50 cars ...',
-        id: 'description',
-    },
-    markdown: {
-        placeholder: 'Markdown ...',
-        id: 'markdown',
-    },
+    description,
+    markdown,
     type: {
         placeholder: 'select blog type',
         id: 'type',
@@ -39,12 +45,12 @@ const username: IFloatingInput = {
     type: 'text'
 }
 
-const password : IFloatingInput = {
+const password: IFloatingInput = {
     placeholder: 'Password',
     id: 'password',
     type: 'password'
 }
-const rePassword : IFloatingInput = {
+const rePassword: IFloatingInput = {
     placeholder: 'Re enter password',
     id: 're-password',
     type: 'password'
@@ -54,7 +60,7 @@ export const AUTH_CONSTANT = {
     signIn: {
         username,
         password,
-        btnText : 'login'
+        btnText: 'login'
     },
     signUp: {
         name: {
@@ -65,15 +71,15 @@ export const AUTH_CONSTANT = {
         username,
         password,
         rePassword,
-        btnText : 'create account'
+        btnText: 'create account'
     },
     forgotPassword: {
         username,
-        btnText : 'Send password reset link'
+        btnText: 'Send password reset link'
     },
     changePassword: {
         password,
         rePassword,
-        btnText : 'Change Password'
+        btnText: 'Change Password'
     }
 }

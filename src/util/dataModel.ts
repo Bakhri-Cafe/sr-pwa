@@ -16,7 +16,7 @@ export interface IType extends baseInterface {
     cat1: string;
     cat2?: string;
     description: string;
-    
+
 }
 
 export interface IActiveType extends IType {
@@ -98,6 +98,19 @@ export type IInputType =
 export interface IFloatingInput {
     placeholder: string,
     id: string,
-    type: IInputType,
+    type?: IInputType,
     classes?: string
+}
+
+export interface IFloatingSelect {
+    placeholder: string,
+    id: string,
+    classes?: string
+}
+
+
+export interface IFloatingTextarea extends IFloatingInput {
+    autoResize ?: number,
+    maxChar ?: number
+
 }

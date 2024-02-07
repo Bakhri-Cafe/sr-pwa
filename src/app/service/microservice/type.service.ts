@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 export class TypeService {
 
   constructor(private http: HttpClient) { }
+  all() {
+    return this.http.get<IType[]>(`${environment.typePath}/get/all`)
+  }
   getAll(filterCriteria: string): Observable<{ types: IType[], pagination: IPagination }> {
     return this.http.get<{ types: IType[], pagination: IPagination }>(`${environment.typePath}?${filterCriteria}`);
   }

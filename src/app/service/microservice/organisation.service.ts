@@ -9,6 +9,10 @@ import { environment } from '../../../environments/environment';
 })
 export class OrganisationService {
   constructor(private http: HttpClient) { }
+  all() {
+    return this.http.get<IOrganisation[]>(`${environment.organisationPath}/get/all`)
+  }
+
   getAll() {
     return this.http.get<IOrganisation[]>(`${environment.organisationPath}`)
   }
