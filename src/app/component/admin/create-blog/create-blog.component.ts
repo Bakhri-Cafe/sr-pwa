@@ -11,12 +11,11 @@ import { FloatingSelectComponent } from '../../shared/type-head/floating-select/
 import { IOrganisation, IType } from '../../../../util/dataModel';
 import { OrganisationService } from '../../../service/microservice/organisation.service';
 import { TypeService } from '../../../service/microservice/type.service';
-import { FloatingMultiSelectComponent } from '../../shared/type-head/floating-multi-select/floating-multi-select.component';
 
 @Component({
   selector: 'sr-create-blog',
   standalone: true,
-  imports: [FloatingMultiSelectComponent, FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
+  imports: [ FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
