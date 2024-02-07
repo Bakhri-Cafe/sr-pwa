@@ -11,12 +11,12 @@ import { FloatingSelectComponent } from '../../shared/type-head/floating-select/
 import { IOrganisation, IType } from '../../../../util/dataModel';
 import { OrganisationService } from '../../../service/microservice/organisation.service';
 import { TypeService } from '../../../service/microservice/type.service';
-import { FloatingTagSearchComponent } from '../../shared/type-head/floating-tag-search/floating-tag-search.component';
+import { FloatingMultiSelectComponent } from '../../shared/type-head/floating-multi-select/floating-multi-select.component';
 
 @Component({
   selector: 'sr-create-blog',
   standalone: true,
-  imports: [FloatingTagSearchComponent, FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
+  imports: [FloatingMultiSelectComponent, FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
@@ -29,11 +29,12 @@ export class CreateBlogComponent {
     markdown: ['', Validators.required],
     description: ['', Validators.required],
     organisation: [''],
-    type: ['']
+    type: [''],
+    tags : ['', Validators.required]
   });
   edit: boolean = true
   constructor(private organisationService: OrganisationService, private typeService: TypeService, private fb: FormBuilder, private blogService: BlogService, private activatedRoute: ActivatedRoute) {
-    this.blogForm.valueChanges.subscribe(console.log)
+    // this.blogForm.valueChanges.subscribe(console.log)
   }
 
   ngOnInit() {

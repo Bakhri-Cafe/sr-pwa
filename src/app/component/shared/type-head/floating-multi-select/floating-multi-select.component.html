@@ -1,0 +1,9 @@
+<div class="form-floating mb-1">
+    <input [type]="CONSTANTS.type" (kayup)="handleSearch($event)" class="form-control" [ngClass]="CONSTANTS.classes" [formControl]="CONTROL"
+        [id]="CONSTANTS.id" [placeholder]="CONSTANTS.placeholder">
+    <label [for]="CONSTANTS.id">{{CONSTANTS.placeholder}}</label>
+</div>
+
+@for (item of selecttedTags; track $index) {
+    <div>{{item.title}}</div>
+}
