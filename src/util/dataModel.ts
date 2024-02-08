@@ -9,6 +9,7 @@ export interface IBlog extends baseInterface {
     description: string
     markdown: string;
     organisation: IOrganisation
+    tags : IType[]
 }
 
 export interface IType extends baseInterface {

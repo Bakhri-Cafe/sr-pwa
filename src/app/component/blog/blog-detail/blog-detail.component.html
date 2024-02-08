@@ -7,6 +7,11 @@
         <img src="https://via.placeholder.com/50" alt="" class="rounded-circle me-1">
         <img src="https://via.placeholder.com/50" alt="" class="rounded-circle me-1">
     </div>
+    <div class="tags">
+        @for (tag of blog.tags; track $index) {
+            <span class="badge text-bg-primary me-1 mb-1 cursor-pointer" [title]="'description '+ tag.description">{{tag.title}}</span>
+        }
+    </div>
 
     <hr />
     <markdown-wrapper [data]="blog.markdown" />
