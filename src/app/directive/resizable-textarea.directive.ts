@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 })
 export class ResizableTextareaDirective implements OnInit {
 
-  @Input() srResizablefield = 0;
+  @Input({required: true}) srResizablefield : number = 0;
   constructor(private elementRef: ElementRef) { }
   @HostListener(':input')
   onInput() {

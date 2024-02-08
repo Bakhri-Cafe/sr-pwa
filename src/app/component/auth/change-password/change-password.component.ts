@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ChangePasswordComponent {
   CHANGE_PASSWORD_CONSTANT = AUTH_CONSTANT.changePassword
-  changePasswordForm: FormGroup;
+  changePasswordForm;
   constructor(private router: Router, private fb: FormBuilder) {
     this.changePasswordForm = this.fb.group({
       password: ['', Validators.required],

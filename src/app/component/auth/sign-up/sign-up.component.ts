@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
   SIGNUP_CONSTANT = AUTH_CONSTANT.signUp
-  signupForm: FormGroup;
+  signupForm;
   constructor(private router: Router, private userService: UserService, private fb: FormBuilder) {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],

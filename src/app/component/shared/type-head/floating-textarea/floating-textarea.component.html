@@ -1,8 +1,9 @@
 <div class="form-floating mb-1">
-    <textarea [maxlength]="CONSTANTS.maxChar !==0 ? CONSTANTS.maxChar : 1/0" [srResizablefield]="CONSTANTS.autoResize"
-        class="form-control" [ngClass]="CONSTANTS.classes" [formControl]="CONTROL" [id]="CONSTANTS.id"
-        [placeholder]="CONSTANTS.placeholder"></textarea>
+    <textarea [maxlength]="CONSTANTS.maxChar && CONSTANTS.maxChar  !==0 ? CONSTANTS.maxChar : 1/0"
+        [srResizablefield]="CONSTANTS.autoResize && CONSTANTS.autoResize" class="form-control" [ngClass]="CONSTANTS.classes"
+        [formControl]="CONTROL" [id]="CONSTANTS.id" [placeholder]="CONSTANTS.placeholder"></textarea>
     <label [for]="CONSTANTS.id">{{CONSTANTS.placeholder}}
-        {{CONSTANTS.maxChar ===0 || CONSTANTS.maxChar === undefined  ? ' ( ' + CONTROL.value.length +' ) ' : 'Max char' + CONSTANTS.maxChar + ' ( ' + CONTROL.value.length +' ) '}}
+        {{CONSTANTS.maxChar ===0 || CONSTANTS.maxChar === undefined ? ' ( ' + CONTROL.value.length +' ) ' : 'Max char' +
+        CONSTANTS.maxChar + ' ( ' + CONTROL.value.length +' ) '}}
     </label>
 </div>

@@ -15,7 +15,7 @@
   @if (edit) {
   <sr-floating-textarea [CONTROL]='blogForm.controls["markdown"]' [CONSTANTS]="BLOG_CONSTANT.markdown" />
   }@else{
-  <markdown-wrapper [data]="blogForm.value.markdown" />
+  <markdown-wrapper [data]="blogForm.value.markdown ?? '' "  />
   }
 
 

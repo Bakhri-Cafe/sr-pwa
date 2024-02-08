@@ -98,7 +98,7 @@ export type IInputType =
 export interface IFloatingInput {
     placeholder: string,
     id: string,
-    type?: IInputType,
+    type : IInputType,
     classes?: string
 }
 
@@ -110,7 +110,6 @@ export interface IFloatingSelect {
 
 
 export interface IFloatingTextarea extends IFloatingInput {
-    autoResize ?: number,
+    autoResize : number,
     maxChar ?: number
-
 }

@@ -6,20 +6,23 @@ const description: IFloatingTextarea = {
     placeholder: 'Description...',
     id: 'description',
     autoResize: 50,
-    maxChar: 100
+    maxChar: 100,
+    type: "number"
 }
 const markdown: IFloatingTextarea = {
     placeholder: 'Markdown...',
     id: 'markdown',
     autoResize: 500,
-    maxChar: undefined
+    maxChar: undefined,
+    type: "number"
+}
+const title : IFloatingInput = {
+    placeholder: 'Title ...',
+    id: 'title',
+    type: 'text'
 }
 export const BLOG_CONSTANT = {
-    title: {
-        placeholder: 'Title ...',
-        id: 'title',
-        type: 'text'
-    },
+    title,
     description,
     markdown,
     type: {
@@ -56,6 +59,12 @@ const rePassword: IFloatingInput = {
     type: 'password'
 }
 
+const name : IFloatingInput = {
+    placeholder: 'Enter name',
+    id: 'name',
+    type: 'text'
+}
+
 export const AUTH_CONSTANT = {
     signIn: {
         username,
@@ -63,11 +72,7 @@ export const AUTH_CONSTANT = {
         btnText: 'login'
     },
     signUp: {
-        name: {
-            placeholder: 'Enter name',
-            id: 'name',
-            type: 'text'
-        },
+        name,
         username,
         password,
         rePassword,

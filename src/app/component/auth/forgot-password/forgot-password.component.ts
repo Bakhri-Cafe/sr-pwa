@@ -12,7 +12,7 @@ import { AUTH_CONSTANT } from '../../../../util/constants';
 })
 export class ForgotPasswordComponent {
   FORGOT_PASSWORD = AUTH_CONSTANT.forgotPassword
-  forgotPasswordForm: FormGroup
+  forgotPasswordForm
   constructor(private fb: FormBuilder) {
     this.forgotPasswordForm = this.fb.group({
       username: ['', Validators.required]

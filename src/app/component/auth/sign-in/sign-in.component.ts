@@ -13,7 +13,7 @@ import { AUTH_CONSTANT} from '../../../../util/constants';
 })
 export class SignInComponent {
   SIGNIN_CONSTANT= AUTH_CONSTANT.signIn
-  loginForm: FormGroup;
+  loginForm;
   constructor(private router: Router,private userService: UserService, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -25,7 +25,7 @@ export class SignInComponent {
   handleOnSubmit() {
     const { username, password, rememberMe } = this.loginForm.value
     if (username && password) {
-      this.userService.signIn(username, password, rememberMe).subscribe(
+      this.userService.signIn(username, password, rememberMe  ?? false).subscribe(
         {
           next: data => this.router.navigate(['admin']),
           error: error => {

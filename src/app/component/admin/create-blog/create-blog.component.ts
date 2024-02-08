@@ -23,7 +23,7 @@ export class CreateBlogComponent {
   BLOG_CONSTANT = BLOG_CONSTANT
   organisationData !: IOrganisation[]
   typeData !: IType[]
-  blogForm: FormGroup = this.fb.group({
+  blogForm = this.fb.group({
     title: ['', Validators.required],
     markdown: ['', Validators.required],
     description: ['', Validators.required],
@@ -47,7 +47,8 @@ export class CreateBlogComponent {
               markdown: blog.markdown,
               description: blog.description,
               organisation: "...",
-              type: "..."
+              type: "...",
+              tags: null
             })
         }
       });
