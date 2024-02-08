@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditBlogComponent } from './edit-blog.component';
+import { MultiSelectComponent } from './multi-select.component';
 
-describe('EditBlogComponent', () => {
-  let component: EditBlogComponent;
-  let fixture: ComponentFixture<EditBlogComponent>;
+describe('MultiSelectComponent', () => {
+  let component: MultiSelectComponent;
+  let fixture: ComponentFixture<MultiSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditBlogComponent]
+      imports: [MultiSelectComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(EditBlogComponent);
+    fixture = TestBed.createComponent(MultiSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

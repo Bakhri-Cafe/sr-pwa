@@ -1,0 +1,18 @@
+<div class="form-floating mb-1">
+    <input [type]="CONSTANTS.type" (keyup)="handleKeyUp($event)" class="form-control" [ngClass]="CONSTANTS.classes"
+        [formControl]="CONTROL" [id]="CONSTANTS.id" [placeholder]="CONSTANTS.placeholder">
+    <label [for]="CONSTANTS.id">{{CONSTANTS.placeholder}}</label>
+</div>
+
+<div class="tag-options">
+    <div class="list-group">
+        @for (tag of selectedItems; track $index) {
+        <span class="badge text-bg-primary mb-1 me-1 cursor-pointer" [id]="tag._id" (click)="handleSelect(tag)">{{tag.title}} {{tag.cat1}}
+            {{tag.cat2}}</span>
+        }
+        @for (tag of searchResult; track $index) {
+        <span class="badge text-bg-light cursor-pointer" [id]="tag._id" (click)="handleSelect(tag)">{{tag.title}} {{tag.cat1}}
+            {{tag.cat2}}</span>
+        }
+    </div>
+</div>

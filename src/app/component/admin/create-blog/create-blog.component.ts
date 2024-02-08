@@ -11,15 +11,17 @@ import { FloatingSelectComponent } from '../../shared/type-head/floating-select/
 import { IOrganisation, IType } from '../../../../util/dataModel';
 import { OrganisationService } from '../../../service/microservice/organisation.service';
 import { TypeService } from '../../../service/microservice/type.service';
+import { MultiSelectComponent } from '../../shared/type-head/multi-select/multi-select.component';
 
 @Component({
   selector: 'sr-create-blog',
   standalone: true,
-  imports: [ FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
+  imports: [MultiSelectComponent, FloatingTextareaComponent, FloatingSelectComponent, JsonPipe, FloatingInputComponent, MarkdownWrapperComponent, ReactiveFormsModule],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
 export class CreateBlogComponent {
+  selectedTags: IType[] = []
   BLOG_CONSTANT = BLOG_CONSTANT
   organisationData !: IOrganisation[]
   typeData !: IType[]
@@ -29,7 +31,7 @@ export class CreateBlogComponent {
     description: ['', Validators.required],
     organisation: [''],
     type: [''],
-    tags : ['', Validators.required]
+    tags: ['', Validators.required]
   });
   edit: boolean = true
   constructor(private organisationService: OrganisationService, private typeService: TypeService, private fb: FormBuilder, private blogService: BlogService, private activatedRoute: ActivatedRoute) {
@@ -65,5 +67,8 @@ export class CreateBlogComponent {
   }
   charCount(text: string) {
     return text.length
+  }
+  handleSelectItemEmmiter($event: string) {
+    this.selectedTags = JSON.parse($event)
   }
 }
