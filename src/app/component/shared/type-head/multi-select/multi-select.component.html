@@ -6,11 +6,11 @@
 
 <div class="tag-options">
     <div class="list-group">
-        @for (tag of _selectedItems; track $index) {
+        @for (tag of selectedTags; track $index) {
         <span class="badge text-bg-primary mb-1 me-1 cursor-pointer" [id]="tag._id" (click)="handleSelect(tag)">{{tag.title}} {{tag.cat1}}
             {{tag.cat2}}</span>
         }
-        @for (tag of _searchResult; track $index) {
+        @for (tag of searchResult; track $index) {
         <span class="badge text-bg-light cursor-pointer" [id]="tag._id" (click)="handleSelect(tag)">{{tag.title}} {{tag.cat1}}
             {{tag.cat2}}</span>
         }
