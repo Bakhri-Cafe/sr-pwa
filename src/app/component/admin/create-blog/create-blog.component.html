@@ -9,11 +9,11 @@
         [data]="organisationData" />
     </div>
     <div class="col-md-6">
-      <sr-multi-select  (selectItemEmmiter)="handleSelectItemEmmiter($event)" [data]="typeData" [CONTROL]="blogForm.controls['tags']" [CONSTANTS]="BLOG_CONSTANT.tag" />
+      <sr-multi-select [selectedTags]="selectedTags" (selectItemEmmiter)="handleSelectItemEmmiter($event)" [data]="typeData" [CONTROL]="blogForm.controls['tags']" [CONSTANTS]="BLOG_CONSTANT.tag" />
     </div>
   </div>
   @if (edit) {
-  <sr-floating-textarea [CONTROL]='blogForm.controls["markdown"]' [CONSTANTS]="BLOG_CONSTANT.markdown" />
+  <sr-floating-textarea  [CONTROL]='blogForm.controls["markdown"]' [CONSTANTS]="BLOG_CONSTANT.markdown" />
   }@else{
   <markdown-wrapper [data]="blogForm.value.markdown ?? '' " />
   }

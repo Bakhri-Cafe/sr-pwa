@@ -52,6 +52,7 @@ export class CreateBlogComponent {
               type: "...",
               tags: null
             })
+            this.selectedTags = blog.tags
         }
       });
     this.organisationService.all().subscribe(res => this.organisationData = res)
