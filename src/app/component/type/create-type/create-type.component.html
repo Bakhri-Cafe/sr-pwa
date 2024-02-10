@@ -1,2 +1,14 @@
-
-<p>create-type works!</p>
+<form class="container">
+    <floating-input [CONTROL]='typeForm.controls["title"]' [CONSTANTS]="CREATE_BLOG_CONST['title']" />
+    <div class="row">
+        <div class="col-md-6">
+            <sr-floating-select [CONTROL]='typeForm.controls["cat1"]' [CONSTANTS]="CREATE_BLOG_CONST.cat1"
+                [data]="cat1Data" />
+        </div>
+        <div class="col-md-6">
+            <sr-floating-select [CONTROL]='typeForm.controls["cat2"]' [CONSTANTS]="CREATE_BLOG_CONST.cat2"
+                [data]="cat2Data" />
+        </div>
+    </div>
+    <sr-floating-textarea  [CONTROL]='typeForm.controls["description"]' [CONSTANTS]="CREATE_BLOG_CONST.description" />
+</form>

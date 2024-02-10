@@ -32,7 +32,7 @@ export class MultiSelectComponent implements OnChanges {
     if (element.value.length < 2) {
       this.searchResult = []
     } else {
-      this.searchResult = this._data.filter(x => x.title.includes(element.value))
+      this.searchResult = this._data.filter(x => x.title.toLowerCase().includes(element.value.toLowerCase()))
     }
   }
 

@@ -1,6 +1,12 @@
-import { IFloatingInput, IFloatingTextarea } from "./dataModel"
+import { IFloatingInput, IFloatingSelect, IFloatingTextarea } from "./dataModel"
 
 export const defaultAvatar = 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1151.jpg'
+
+const title: IFloatingInput = {
+    placeholder: 'Title ...',
+    id: 'title',
+    type: 'text'
+}
 
 const description: IFloatingTextarea = {
     placeholder: 'Description...',
@@ -9,6 +15,28 @@ const description: IFloatingTextarea = {
     maxChar: 200,
     type: "number"
 }
+export const CREATE_BLOG_CONST = {
+    title,
+    cat1: {
+        placeholder: 'select cat1',
+        id: 'cat1',
+        type: 'text'
+    },
+    cat2: {
+        placeholder: 'select cat2',
+        id: 'cat2',
+        type: 'text'
+    },
+    description: {
+        ...description, autoResize: 150, maxChar : 500
+    }
+}
+
+
+
+
+
+
 const markdown: IFloatingTextarea = {
     placeholder: 'Markdown...',
     id: 'markdown',
@@ -16,11 +44,7 @@ const markdown: IFloatingTextarea = {
     maxChar: undefined,
     type: "number"
 }
-const title: IFloatingInput = {
-    placeholder: 'Title ...',
-    id: 'title',
-    type: 'text'
-}
+
 const tag: IFloatingInput = {
     placeholder: 'Search tag',
     id: 'tag',
@@ -28,65 +52,65 @@ const tag: IFloatingInput = {
 }
 
 export const BLOG_CONSTANT = {
-        title,
-        description,
-        markdown,
-        type: {
-            placeholder: 'select blog type',
-            id: 'type',
-            type: 'text'
-        },
-        organisation: {
-            placeholder: 'select Organisation',
-            id: 'organisation',
-            type: 'text'
-        },
-        tag
-    }
+    title,
+    description,
+    markdown,
+    type: {
+        placeholder: 'select blog type',
+        id: 'type',
+        type: 'text'
+    },
+    organisation: {
+        placeholder: 'select Organisation',
+        id: 'organisation',
+        type: 'text'
+    },
+    tag
+}
 
 const username: IFloatingInput = {
-        placeholder: 'Enter username',
-        id: 'username',
-        type: 'text'
-    }
+    placeholder: 'Enter username',
+    id: 'username',
+    type: 'text'
+}
 
 const password: IFloatingInput = {
-        placeholder: 'Password',
-        id: 'password',
-        type: 'password'
-    }
+    placeholder: 'Password',
+    id: 'password',
+    type: 'password'
+}
 const rePassword: IFloatingInput = {
-        placeholder: 'Re enter password',
-        id: 're-password',
-        type: 'password'
-    }
+    placeholder: 'Re enter password',
+    id: 're-password',
+    type: 'password'
+}
 
-const name : IFloatingInput = {
-        placeholder: 'Enter name',
-        id: 'name',
-        type: 'text'
-    }
+const name: IFloatingInput = {
+    placeholder: 'Enter name',
+    id: 'name',
+    type: 'text'
+}
 
 export const AUTH_CONSTANT = {
-        signIn: {
-            username,
-            password,
-            btnText: 'login'
-        },
-        signUp: {
-            name,
-            username,
-            password,
-            rePassword,
-            btnText: 'create account'
-        },
-        forgotPassword: {
-            username,
-            btnText: 'Send password reset link'
-        },
-        changePassword: {
-            password,
-            rePassword,
-            btnText: 'Change Password'
-        }
+    signIn: {
+        username,
+        password,
+        btnText: 'login'
+    },
+    signUp: {
+        name,
+        username,
+        password,
+        rePassword,
+        btnText: 'create account'
+    },
+    forgotPassword: {
+        username,
+        btnText: 'Send password reset link'
+    },
+    changePassword: {
+        password,
+        rePassword,
+        btnText: 'Change Password'
     }
+}
