@@ -4,8 +4,8 @@
   <sr-floating-textarea [CONTROL]='blogForm.controls["description"]' [CONSTANTS]="BLOG_CONSTANT.description" />
   <div class="row mb-1">
     <div class="col-md-6">
-      <sr-floating-select [CONTROL]='blogForm.controls["type"]' [CONSTANTS]="BLOG_CONSTANT.type" [data]="typeData" />
-      <sr-floating-select [CONTROL]='blogForm.controls["organisation"]' [CONSTANTS]="BLOG_CONSTANT.organisation"
+      <sr-floating-select (changeEmitter)="handleTypeChangeEmitter($event)" [selectedItem]="selectedType" [CONTROL]='blogForm.controls["type"]' [CONSTANTS]="BLOG_CONSTANT.type" [data]="typeData" />
+      <sr-floating-select (changeEmitter)="handleOrganisationChangeEmitter($event)" [selectedItem]="selectedOrganisation" [CONTROL]='blogForm.controls["organisation"]' [CONSTANTS]="BLOG_CONSTANT.organisation"
         [data]="organisationData" />
     </div>
     <div class="col-md-6">

@@ -17,4 +17,7 @@ export class BlogService {
   post(formdata: any): Observable<IBlog> {
     return this.http.post<IBlog>(`${environment.blogPath}`, formdata);
   }
+  put(_id: string, formdata: any): Observable<IBlog>{
+    return this.http.put<IBlog>(`${environment.blogPath}/${_id}`, formdata);
+  }
 }
