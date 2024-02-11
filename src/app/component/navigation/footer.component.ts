@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { SocialMediaComponent } from '../shared/social-media/social-media.component';
 
 @Component({
   selector: 'sr-footer',
   standalone: true,
-  imports: [],
+  imports: [SocialMediaComponent],
   template: `
   <div class="footer-container mt-4">
     <div class="container ">
@@ -43,6 +44,7 @@ import { Component } from '@angular/core';
       </div>
       
       <div class="col-md-5 offset-md-1 mb-3">
+      <sr-social-media/>
         <form>
           <h5>Subscribe to our newsletter</h5>
           <p>Monthly digest of what's new and exciting from us.</p>
@@ -57,11 +59,7 @@ import { Component } from '@angular/core';
 
     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
       <p>&copy; 2023 Company, Inc. All rights reserved.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg>t</a></li>
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg>i</a></li>
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg>f</a></li>
-      </ul>
+      
     </div>
   </footer>
 </div>

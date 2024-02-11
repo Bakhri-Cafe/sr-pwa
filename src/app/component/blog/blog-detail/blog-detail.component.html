@@ -11,9 +11,10 @@
         @for (tag of blog.tags; track $index) {
             <span class="badge text-bg-primary me-1 mb-1 cursor-pointer" [title]="'description '+ tag.description">{{tag.title}}</span>
         }
+        <!-- <sr-social-media style="float: inline-end;"/> -->
     </div>
-
+    
     <hr />
     <markdown-wrapper [data]="blog.markdown" />
-    <!-- <sr-comment /> -->
+    <sr-comment />
 </div>
