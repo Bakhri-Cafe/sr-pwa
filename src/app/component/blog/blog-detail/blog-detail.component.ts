@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IBlog } from '../../../../util/dataModel';
 import { MarkdownWrapperComponent } from '../../shared/markdown-wrapper.component';
 import { SocialMediaComponent } from '../../shared/social-media/social-media.component';
 import { CommentComponent } from '../../shared/comment/comment.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sr-blog-detail',
