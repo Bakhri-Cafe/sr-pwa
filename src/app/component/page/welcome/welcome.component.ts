@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { BlogGroupComponent } from '../../blog/blog-group/blog-group.component';
 import { ActivatedRoute } from '@angular/router';
+import { CrauselComponent } from '../../shared/crausel/crausel.component';
 @Component({
   selector: 'sr-welcome',
   standalone: true,
-  imports: [BlogGroupComponent],
+  imports: [BlogGroupComponent, CrauselComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss'
 })
