@@ -20,4 +20,7 @@ export class OrganisationService {
   get(organisationId: string): Observable<IOrganisation> {
     return this.http.get<IOrganisation>(`${environment.organisationPath}/${organisationId}`);
   }
+  post(formData: any): Observable<IOrganisation> {
+    return this.http.post<IOrganisation>(`${environment.organisationPath}`,formData);
+  }
 }

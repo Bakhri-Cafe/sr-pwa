@@ -5,5 +5,6 @@ export const environment = {
     blogPath: `${BaseUrl}/blog`,
     userPath: `${BaseUrl}/user`,
     organisationPath: `${BaseUrl}/organisation`,
-    typePath: `${BaseUrl}/type`
+    typePath: `${BaseUrl}/type`,
+    filePath : `${BaseUrl}/files`
 };

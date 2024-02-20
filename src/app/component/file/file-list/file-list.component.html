@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row my-3">
+        <floating-input (keyPressEmitter)="handleEmitChanges($event)" [CONTROL]="searchControl" [CONSTANTS]="SEARCH" />
+    </div>
+    <div class="row g-1">
+        @for (item of files; track $index) {
+        <div class="col col-sm-4 col-md-3 ">
+            <sr-file-item [file]="item" />
+        </div>
+        }
+    </div>
+    @if (isPagination) {
+    <div class="row">
+        <sr-pagination (getDataEmitter)="handlePaginationEmit($event)" [currentPage]="pagination.currentPage" [totalRecord]="pagination.totalRecord" />
+    </div>
+    }
+</div>

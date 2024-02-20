@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IFloatingInput } from '../../../../../util/dataModel';
 import { ResizableTextareaDirective } from '../../../../directive/resizable-textarea.directive';
@@ -14,4 +14,9 @@ import { ResizableTextareaDirective } from '../../../../directive/resizable-text
 export class FloatingInputComponent {
   @Input({ required: true }) CONTROL = new FormControl()
   @Input({ required: true }) CONSTANTS !: IFloatingInput
+  @Output() keyPressEmitter = new EventEmitter();
+
+  emitChanges($event : KeyboardEvent){
+    this.keyPressEmitter.emit($event)
+  }
 }

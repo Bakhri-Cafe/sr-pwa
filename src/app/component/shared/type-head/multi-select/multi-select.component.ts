@@ -27,7 +27,7 @@ export class MultiSelectComponent implements OnChanges {
     this._data = filterArrayFromArray(this.data, this.selectedTags)
   }
 
-  handleKeyUp($event: Event) {
+  handleKeyUp($event: KeyboardEvent) {
     const element = ($event.target as HTMLInputElement)
     if (element.value.length < 2) {
       this.searchResult = []

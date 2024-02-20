@@ -13,10 +13,5 @@ export const filterArrayFromArray =
                 }
             });
         });
-        console.log('111111111', _1)
         return _1
     }
-
-
-    // data  always pass
-    // _data

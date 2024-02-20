@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { WelcomeComponent } from './component/page/welcome/welcome.component';
 import { BlogsComponent } from './component/page/blogs/blogs.component';
-import { WelcomeResolver, blogResolver, blogsResolver, organisationResolver, organisationsResolver, typesResolver } from '../util/resolver';
+import { WelcomeResolver, blogResolver, blogsResolver, filesResolver, organisationResolver, organisationsResolver, typesResolver } from '../util/resolver';
 import { BlogDetailPageComponent } from './component/page/blog-detail-page/blog-detail-page.component';
 import { OrganisationPageComponent } from './component/page/organisation-page/organisation-page.component';
 import { OrganisationListComponent } from './component/organisation/organisation-list/organisation-list.component';
@@ -17,6 +17,9 @@ import { authChildrenGuard, noAuthChildrenGuard } from '../util/auth-guard.guard
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
 import { CreateBlogComponent } from './component/admin/create-blog/create-blog.component';
 import { ListTypeComponent } from './component/type/list-type/list-type.component';
+import { CreateOrganisationComponent } from './component/organisation/create-organisation/create-organisation.component';
+import { FileListComponent } from './component/file/file-list/file-list.component';
+import { CreateFileComponent } from './component/file/create-file/create-file.component';
 
 
 export const routes: Routes = [
@@ -40,15 +43,27 @@ export const routes: Routes = [
     },
     {
         path: 'admin', component: AdminPageComponent, canActivateChild: [authChildrenGuard], children: [
-            { path: '', component: DashboardComponent, pathMatch: 'full' },
-            { path: 'blogs-list', resolve: { blogs: WelcomeResolver }, component: WelcomeComponent },
-            { path: 'blogs-list/blogs/:blogType', resolve: { blogs: blogsResolver }, component: BlogsComponent },
-            { path: 'blogs/create',  component: CreateBlogComponent },
-            { path: 'blogs-list/blogs/blog/:id', resolve: { blog: blogResolver }, component: CreateBlogComponent },
-            { path: 'blogs-list/blogs/:blogType/blogs/blog/:id', redirectTo:'blogs-list/blogs/blog/:id' },
 
-            {path:'type', component: ListTypeComponent,  resolve: { types: typesResolver }},
+            { path: '', component: DashboardComponent, pathMatch: 'full' },
+            { path: 'blogs-list', pathMatch: 'full', resolve: { blogs: WelcomeResolver }, component: WelcomeComponent },
+            { path: 'blogs-list/blogs/:blogType', resolve: { blogs: blogsResolver }, component: BlogsComponent },
+            { path: 'blogs-list/create', component: CreateBlogComponent },
+            { path: 'blogs-list/blogs/blog/:id', resolve: { blog: blogResolver }, component: CreateBlogComponent },
+            { path: 'blogs-list/blogs/:blogType/blogs/blog/:id', redirectTo: 'blogs-list/blogs/blog/:id' },
+
+
+            { path: 'organisations', resolve: { organisations: organisationsResolver }, component: OrganisationListComponent, pathMatch: 'full' },
+            { path: 'organisations/create', component: CreateOrganisationComponent },
+            { path: 'organisations/details/:_id', resolve: { organisation: organisationResolver }, component: CreateOrganisationComponent },
+
+
+
+            { path: 'files', resolve: { files: filesResolver }, component: FileListComponent, pathMatch: 'full' },
+            { path: 'files/create', component: CreateFileComponent },
+
+
+            { path: 'type', component: ListTypeComponent, resolve: { types: typesResolver } },
         ]
     },
     { path: '**', component: NotFoundComponent }
-];
+]

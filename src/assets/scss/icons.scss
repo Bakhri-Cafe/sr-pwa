@@ -1,0 +1,12 @@
+$icon-names: 'copy-icon'; // add more icon names here
+$icon-path: 'assets/icons'; // replace with the path to your icons folder
+
+@each $icon-name in $icon-names {
+  .#{$icon-name} {
+    background-image: url('#{$icon-path}/#{$icon-name}.svg');
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    z-index: 33000;
+  }
+}

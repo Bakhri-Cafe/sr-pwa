@@ -1,13 +1,14 @@
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
 import { BlogService } from '../app/service/microservice/blog.service';
-import { IBlog, IOrganisation, IPagination, IType } from './dataModel';
+import { IBlog, IFile, IOrganisation, IPagination, IType } from './dataModel';
 import { forkJoin } from 'rxjs';
 import { OrganisationService } from '../app/service/microservice/organisation.service';
 import { TypeService } from '../app/service/microservice/type.service';
+import { FileService } from '../app/service/microservice/file.service';
 
-export const getCriteria = (extraCriteria: string, pageNumber = 1) => {
-  return `${extraCriteria}&limit=20&sort=createdAt&page=${pageNumber}`
+export const getCriteria = (extraCriteria: string, limit = 20,  pageNumber = 1, sortBy = 'createdAt') => {
+  return `${extraCriteria}&limit=${limit}&sort=${sortBy}&page=${pageNumber}`
 }
 
 export const blogResolver: ResolveFn<IBlog> = (route, state) => {
@@ -35,4 +36,8 @@ export const organisationResolver: ResolveFn<IOrganisation> = (route, state) => 
 
 export const typesResolver: ResolveFn<{ types: IType[]; pagination: IPagination }> = (route, state) => {
   return inject(TypeService).getAll(getCriteria('', route.queryParams['page']));
+};
+
+export const filesResolver: ResolveFn<{ models: IFile[]; pagination: IPagination }> = (route, state) => {
+  return inject(FileService).getAll(getCriteria(`name=.*`));
 };
