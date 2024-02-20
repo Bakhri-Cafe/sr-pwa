@@ -8,11 +8,12 @@ import { LoaderComponent } from './component/shared/loader/loader.component';
 import { SRLocalStorage, SRSessionStorage, srBrowserStorage } from '../util/browserStorage';
 import { IUser } from '../util/dataModel';
 import { UserService } from './service/microservice/user.service';
+import { ToasterComponent } from './component/shared/toaster/toaster.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
+  imports: [ToasterComponent,CommonModule, RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

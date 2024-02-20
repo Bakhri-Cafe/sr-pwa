@@ -30,7 +30,7 @@ export interface IOrganisation extends baseInterface {
     markdown: string;
 }
 
-export interface IFile extends Document {
+export interface IFile extends baseInterface {
     name: string;
     path: string;
     description?: string
@@ -113,4 +113,17 @@ export interface IFloatingSelect {
 export interface IFloatingTextarea extends IFloatingInput {
     autoResize : number,
     maxChar ?: number
+}
+export enum EventTypes {
+    Success = 'success',
+    Info = 'info',
+    Warning = 'warning',
+    Error = 'error',
+  }
+
+
+export interface ToastEvent {
+  type: EventTypes;
+  title: string;
+  message: string;
 }
