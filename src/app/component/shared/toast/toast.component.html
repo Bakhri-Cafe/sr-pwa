@@ -1,0 +1,12 @@
+<div id="liveToast" class="toast fade" [ngClass]="[toast.type , toast.show ? 'show' : '']" role="alert" aria-live="assertive"
+    aria-atomic="true">
+    <div class="toast-header">
+        <img src="../../../../assets/logo/logoBlue.png" height="15" class="rounded me-2" alt="logo">
+        <strong class="me-auto">{{toast.title}}</strong>
+        <small>{{counter}}</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{toast.message}}
+    </div>
+</div>

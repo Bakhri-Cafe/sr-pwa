@@ -4,3 +4,8 @@
 <sr-loader [loading]="loading" [loadingPercentage]="loadingPercentage + ''" />
 <router-outlet />
 <sr-footer />
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 50;">
+    @for (toast of toasts; track $index) {
+    <sr-toast [toast]="toast"></sr-toast>
+    }
+</div>
