@@ -1,7 +1,7 @@
-<div class="card file" [title]="file.description" [routerLink]="['file', file._id]">
-    <img [src]="file.path" class="card-img-top" alt="...">
-    <i class="copy-icon" (click)="copyImagePath(file.path)"></i>
+<div class="card file"  >
+    <img [src]="file.path" class="card-img-top" [alt]="file.description" [routerLink]="['file', file._id]">
+    <i class="i-copy-md" (click)="copyImagePath(file.path)"></i>
     <div class="card-body">
-        <p class="card-title">{{file.name}}</p>
+        <i class="i-info-sm" [title]="file.description"></i><span class="card-title" [routerLink]="['file', file._id]">{{file.name}}</span>
     </div>
 </div>

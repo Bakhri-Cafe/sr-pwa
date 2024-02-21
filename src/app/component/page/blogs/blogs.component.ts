@@ -29,7 +29,7 @@ export class BlogsComponent {
     this.activatedRoute.paramMap.subscribe((r: any) => this._blogType = r.params['blogType'])
   }
   getDataEmitterHandler(pageNumber: number){
-    this.blogService.getAll(getCriteria(this._blogType,pageNumber)).subscribe((res)=>{
+    this.blogService.getAll(getCriteria(`type=${this._blogType}`,20,pageNumber)).subscribe((res)=>{
       this.blogs= res.blogs
       this.pagination= res.pagination
     })

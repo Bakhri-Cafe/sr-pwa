@@ -16,7 +16,7 @@ export const blogResolver: ResolveFn<IBlog> = (route, state) => {
 };
 
 export const blogsResolver: ResolveFn<{ blogs: IBlog[]; pagination: IPagination }> = (route, state) => {
-  return inject(BlogService).getAll(getCriteria(`type = ${route.paramMap.get('blogType') ?? 'Results'}`, route.queryParams['page'] ?? 1));
+  return inject(BlogService).getAll(getCriteria(`type=${route.paramMap.get('blogType') ?? 'Results'}`,20, route.queryParams['page'] ?? 1));
 };
 
 export const WelcomeResolver: ResolveFn<any> = (route, state) => {
