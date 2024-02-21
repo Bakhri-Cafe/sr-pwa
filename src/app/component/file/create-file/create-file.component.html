@@ -1,1 +1,19 @@
-<p>create-file works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="fileForm.value.path ? fileForm.value.path : defaultImage" class="img-fluid image-obj" alt="...">
+        </div>
+        <div class="col-md-6">
+            <form [formGroup]="fileForm" (ngSubmit)="id ? updateHandler() : submitHandler()">
+                <floating-input [CONTROL]="fileForm.controls['name']" [CONSTANTS]="FILE_CONSTANT.name" />
+                <floating-input disabled [CONTROL]="fileForm.controls['path']" [CONSTANTS]="FILE_CONSTANT.path" />
+                <sr-floating-textarea [CONTROL]="fileForm.controls['description']"
+                    [CONSTANTS]="FILE_CONSTANT.description" />
+
+                <button type="submit" class="btn btn-primary text-center">
+                    {{id ? 'Update' : 'Create'}}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

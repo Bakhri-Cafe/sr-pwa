@@ -1,0 +1,19 @@
+.image-obj{
+    text-align: center;
+    height: 400px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    &.active{
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    &.disabled{
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}

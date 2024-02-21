@@ -59,6 +59,7 @@ export const routes: Routes = [
 
 
             { path: 'files', resolve: { files: filesResolver }, component: FileListComponent, pathMatch: 'full' },
+            { path: 'files/file/:id', component: CreateFileComponent },
             { path: 'files/create', component: CreateFileComponent },
 
 

@@ -64,6 +64,13 @@ const name: IFloatingInput = {
     type: 'text'
 }
 
+const path: IFloatingInput = {
+    placeholder: 'Path',
+    id: 'path',
+    type: 'text'
+
+}
+
 export const ORGANISATION_CONSTANT = {
     name: title,
     description: { ...description, autoResize: 100 },
@@ -129,4 +136,13 @@ export const AUTH_CONSTANT = {
         rePassword,
         btnText: 'Change Password'
     }
+}
+
+
+
+export const FILE_CONSTANT = {
+    name: title,
+    path,
+    description,
+    btnText: 'Create'
 }
