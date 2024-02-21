@@ -1,4 +1,4 @@
-<div class="card file" [title]="file.description">
+<div class="card file" [title]="file.description" [routerLink]="['file', file._id]">
     <img [src]="file.path" class="card-img-top" alt="...">
     <i class="copy-icon" (click)="copyImagePath(file.path)"></i>
     <div class="card-body">
