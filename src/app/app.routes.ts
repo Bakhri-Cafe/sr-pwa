@@ -27,6 +27,7 @@ export const routes: Routes = [
     { path: 'welcome', resolve: { blogs: WelcomeResolver }, component: WelcomeComponent },
     { path: 'welcome/blogs/:blogType', resolve: { blogs: blogsResolver }, component: BlogsComponent },
     { path: 'welcome/blogs/blog/:id', resolve: { blogs: blogResolver }, component: BlogDetailPageComponent },
+    { path: 'welcome/blogs/:blogType/blogs/blog/:id', redirectTo: 'welcome/blogs/blog/:id' },
     {
         path: 'organisations', component: OrganisationPageComponent, children: [
             { path: '', resolve: { organisations: organisationsResolver }, component: OrganisationListComponent, pathMatch: 'full' },
