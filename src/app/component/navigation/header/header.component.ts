@@ -27,6 +27,6 @@ export class HeaderComponent implements OnInit {
   }
   fullanme() {
     const { first, middle, last } = this.auth.data.name
-    return `${first} ${middle} ${last}`
+    return `${first} ${middle || ''} ${last || ''}`
   }
 }
