@@ -1,11 +1,40 @@
-<sr-create-type />
-<div class="type">
-  @for (type of types; track type._id) {
-  <div class="header cursor-pointer" (click)="handleTypeClick(type._id)">
-    {{type.cat1}} - {{type.cat2}} - {{type.title}}
-  </div>
-  <div class="content" [ngClass]="type.classes">
-    {{type.description}}
-  </div>
-  }
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addType">Primary
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="d-flex justify-content-around align-items-center">
+        <i class="bi bi-archive-fill"></i><i class="bi bi-pencil-square"></i>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>twitter</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Button trigger modal -->
+
+<sr-modal modelId='addType' title="Add Types">
+  <sr-create-type />
+</sr-modal>

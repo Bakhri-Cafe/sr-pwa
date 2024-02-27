@@ -1,4 +1,4 @@
-<form class="container">
+<form class="container" [formGroup]="typeForm" (ngSubmit)="handleOnSubmit()">
     <floating-input [CONTROL]='typeForm.controls["title"]' [CONSTANTS]="CREATE_BLOG_CONST['title']" />
     <div class="row">
         <div class="col-md-6">
@@ -10,5 +10,8 @@
                 [data]="cat2Data" />
         </div>
     </div>
-    <sr-floating-textarea  [CONTROL]='typeForm.controls["description"]' [CONSTANTS]="CREATE_BLOG_CONST.description" />
+    <sr-floating-textarea [CONTROL]='typeForm.controls["description"]' [CONSTANTS]="CREATE_BLOG_CONST.description" />
+    <div class="d-grid gap-2 mt-4">
+        <button type="submit" class="btn btn-primary">{{CREATE_BLOG_CONST.btnText}}</button>
+    </div>
 </form>

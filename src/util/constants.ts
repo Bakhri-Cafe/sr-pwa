@@ -94,7 +94,8 @@ export const CREATE_BLOG_CONST = {
     },
     description: {
         ...description, autoResize: 150, maxChar: 500
-    }
+    },
+    btnText: 'Create Types'
 }
 
 export const BLOG_CONSTANT = {

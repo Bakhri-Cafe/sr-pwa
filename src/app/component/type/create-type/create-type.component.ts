@@ -8,7 +8,7 @@ import { CREATE_BLOG_CONST } from '../../../../util/constants';
 @Component({
   selector: 'sr-create-type',
   standalone: true,
-  imports: [ReactiveFormsModule, FloatingInputComponent, FloatingTextareaComponent, FloatingSelectComponent],
+  imports: [ReactiveFormsModule, FloatingInputComponent, FloatingTextareaComponent, FloatingSelectComponent, ReactiveFormsModule],
   templateUrl: './create-type.component.html',
   styleUrl: './create-type.component.scss'
 })
@@ -24,6 +24,9 @@ export class CreateTypeComponent {
       cat2: [''],
       description: ['']
     })
+  }
+  handleOnSubmit() {
+    console.log(this.typeForm.value)
   }
 }
 

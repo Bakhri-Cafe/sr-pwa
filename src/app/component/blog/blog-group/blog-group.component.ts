@@ -13,5 +13,6 @@ import { RouterLink } from '@angular/router';
 })
 export class BlogGroupComponent {
   @Input({ required: true }) blogType!: string;
+  @Input() iconClass!: string;
   @Input({ required: true }) blogs!: IBlog[];
 }

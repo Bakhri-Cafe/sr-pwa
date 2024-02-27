@@ -12,12 +12,13 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="submit" class="btn btn-outline-primary text-center btn-icon">
                         {{id ? 'Update' : 'Create'}}
-                        <i [ngClass]="[id ? 'i-update-md': 'i-add-md']"></i>
+                        <i [ngClass]="['bi',id ? 'bi-arrow-bar-up': 'bi-plus']"></i>
                     </button>
                     @if (id) {
                     <button type="button " class="btn btn-outline-danger btn-icon">
                         Delete
-                        <i class="i-delete-md"></i></button>
+                        <i class="bi bi-archive-fill"></i>
+                    </button>
                     }
                 </div>
             </form>
