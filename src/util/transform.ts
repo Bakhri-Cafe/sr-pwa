@@ -15,3 +15,9 @@ export const filterArrayFromArray =
         });
         return _1
     }
+
+export const removeDuplicates = <T>(arr: T[]): T[] => {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index
+    })
+}

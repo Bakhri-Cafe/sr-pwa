@@ -79,19 +79,21 @@ export const ORGANISATION_CONSTANT = {
     btnText: 'Create'
 }
 
+const cat1: IFloatingInput = {
+    placeholder: 'select cat1',
+    id: 'cat1',
+    type: 'text'
+}
+const cat2: IFloatingInput = {
+    placeholder: 'select cat2',
+    id: 'cat2',
+    type: 'text'
+}
 
-export const CREATE_BLOG_CONST = {
+export const CREATE_TYPE_CONST = {
     title,
-    cat1: {
-        placeholder: 'select cat1',
-        id: 'cat1',
-        type: 'text'
-    },
-    cat2: {
-        placeholder: 'select cat2',
-        id: 'cat2',
-        type: 'text'
-    },
+    cat1,
+    cat2,
     description: {
         ...description, autoResize: 150, maxChar: 500
     },

@@ -2,12 +2,25 @@
     <floating-input [CONTROL]='typeForm.controls["title"]' [CONSTANTS]="CREATE_BLOG_CONST['title']" />
     <div class="row">
         <div class="col-md-6">
-            <sr-floating-select [CONTROL]='typeForm.controls["cat1"]' [CONSTANTS]="CREATE_BLOG_CONST.cat1"
-                [data]="cat1Data" />
+            <floating-input (keyPressEmitter)="handleCat1keyPress($event)" [CONTROL]='typeForm.controls["cat1"]'
+                [CONSTANTS]="CREATE_BLOG_CONST.cat1" />
+            <div class="search-result-container">
+                <ul class="list-group search-result">
+                    @for (item of cat1DataSearch; track $index) {
+                    <li class="list-group-item">{{item}}</li>
+                    }
+                </ul>
+            </div>
         </div>
         <div class="col-md-6">
-            <sr-floating-select [CONTROL]='typeForm.controls["cat2"]' [CONSTANTS]="CREATE_BLOG_CONST.cat2"
-                [data]="cat2Data" />
+            <floating-input (keyPressEmitter)="handleCat2keyPress($event)" [CONTROL]='typeForm.controls["cat2"]'
+                [CONSTANTS]="CREATE_BLOG_CONST.cat2" />
+
+            <ul class="list-group">
+                @for (item of cat2DataSearch; track $index) {
+                <li class="list-group-item">{{item}}</li>
+                }
+            </ul>
         </div>
     </div>
     <sr-floating-textarea [CONTROL]='typeForm.controls["description"]' [CONSTANTS]="CREATE_BLOG_CONST.description" />

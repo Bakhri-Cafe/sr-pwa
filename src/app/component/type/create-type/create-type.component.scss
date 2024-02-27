@@ -1,0 +1,10 @@
+.search-result-container {
+    position: relative;
+    display: flex;
+    .search-result {
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+        width: -webkit-fill-available;
+    }
+}

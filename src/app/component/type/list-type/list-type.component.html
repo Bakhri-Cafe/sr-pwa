@@ -1,9 +1,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
+      <th scope="col">Title</th>
+      <th scope="col">Cat 1</th>
+      <th scope="col">Cat 2</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created At</th>
       <th scope="col">
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addType">Primary
           <i class="bi bi-plus-circle"></i>
@@ -12,29 +14,23 @@
     </tr>
   </thead>
   <tbody class="table-group-divider">
+    @for (type of types; track $index) {
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="d-flex justify-content-around align-items-center">
-        <i class="bi bi-archive-fill"></i><i class="bi bi-pencil-square"></i>
+      <td>{{type.title}}</td>
+      <td>{{type.cat1}}</td>
+      <td>{{type.cat2}}</td>
+      <td>{{type.description}}</td>
+      <td>{{type.createdAt}}</td>
+      <td class="d-flex justify-content-around align-items-start">
+        <i class="bi bi-archive-fill" (click)="deleteType(type._id)"></i>
+        <i class="bi bi-pencil-square" (click)="editType(type._id)"></i>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>twitter</td>
-    </tr>
+    }
   </tbody>
 </table>
-<!-- Button trigger modal -->
+
 
 <sr-modal modelId='addType' title="Add Types">
-  <sr-create-type />
+  <sr-create-type (submitForm)="handleOnSubmit($event)" [cat1Data]="cat1Data" [cat2Data]="cat2Data"/>
 </sr-modal>

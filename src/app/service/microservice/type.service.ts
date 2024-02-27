@@ -22,4 +22,7 @@ export class TypeService {
   post(formdata: any): Observable<IType> {
     return this.http.post<IType>(`${environment.typePath}`, formdata);
   }
+  delete(blogId: string): Observable<IType> {
+    return this.http.delete<IType>(`${environment.typePath}/${blogId}`);
+  }
 }
