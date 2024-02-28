@@ -16,14 +16,14 @@
   <tbody class="table-group-divider">
     @for (type of types; track $index) {
     <tr>
-      <td>{{type.title}}</td>
+      <td>{{type.title}} ( {{type.blogCount}} )</td>
       <td>{{type.cat1}}</td>
       <td>{{type.cat2}}</td>
       <td>{{type.description}}</td>
-      <td>{{type.createdAt}}</td>
+      <td>{{type.createdAt}} </td>
       <td class="d-flex justify-content-around align-items-start">
-        <i class="bi bi-archive-fill" (click)="deleteType(type._id)"></i>
-        <i class="bi bi-pencil-square" (click)="editType(type._id)"></i>
+        <button class="bi bi-archive-fill bg-danger" (click)="deleteType(type._id)" [disabled]="type.blogCount"></button>
+        <button class="bi bi-pencil-square bg-info" (click)="editType(type._id)"></button>
       </td>
     </tr>
     }

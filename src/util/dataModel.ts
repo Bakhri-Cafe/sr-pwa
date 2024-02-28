@@ -21,7 +21,8 @@ export interface IType extends baseInterface {
 }
 
 export interface IActiveType extends IType {
-    classes: string[]
+    classes: string[],
+    blogCount ?: number
 }
 export interface IOrganisation extends baseInterface {
     name: string;

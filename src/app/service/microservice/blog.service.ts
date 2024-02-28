@@ -20,4 +20,7 @@ export class BlogService {
   put(_id: string, formdata: any): Observable<IBlog>{
     return this.http.put<IBlog>(`${environment.blogPath}/${_id}`, formdata);
   }
+  count(typeId: string): Observable<number> {
+    return this.http.get<number>(`${environment.blogPath}/${typeId}/count`);
+  } 
 }

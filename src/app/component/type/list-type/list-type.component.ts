@@ -7,6 +7,7 @@ import { ModalComponent } from '../../shared/modal/modal.component';
 import { TypeService } from '../../../service/microservice/type.service';
 import { map } from 'rxjs';
 import { removeDuplicates } from '../../../../util/transform';
+import { BlogService } from '../../../service/microservice/blog.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ deleteType(arg0: string) {
     this.types = types as IActiveType[]
   }))
 }
-  constructor(private activatedRoute: ActivatedRoute, private typeService: TypeService) { }
+  constructor(private activatedRoute: ActivatedRoute,private blogService : BlogService, private typeService: TypeService) { }
   cat1Data !: string[]
   cat2Data !: (string | undefined)[]
   _showDescription: boolean = false
@@ -36,8 +37,14 @@ deleteType(arg0: string) {
   ngOnInit() {
     this.activatedRoute.data.subscribe(
       ({ types }) => {
-        this.types = types.result.map((type: IActiveType) => ({ ...type, classes: [] }))
-        this.pagination = types.pagination
+        this.types = types.result.map((type: IActiveType) => {
+          type.classes = []
+          this.blogService.count(type._id).subscribe((blogCount: number) => {
+            type.blogCount = blogCount;
+          });
+          return type;
+        });
+        this.pagination = types.pagination;
       });
   }
   handleTypeClick(id: string) {
@@ -51,11 +58,27 @@ deleteType(arg0: string) {
   }
 
 
-  types$ = this.typeService.all()
+  types$ = this.typeService.all().pipe(
+    map((types: IType[]) => {
+      return types.map((type: IType) => {
+        const activeType: IActiveType = {
+          ...type,
+          classes: [],
+          blogCount: 0
+        };
+        this.blogService.count(type._id).subscribe((blogCount: number) => {
+          activeType.blogCount = blogCount;
+        });
+        return activeType;
+      });
+    })
+  )
+
   handleOnSubmit(formdata: any) {
     this.typeService.post(JSON.parse(formdata)).subscribe(() => this.types$.subscribe(types => {
       this.cat1Data = removeDuplicates(types.map((type: IType) => type.cat1))    
       this.cat2Data = removeDuplicates(types.map((type: IType) => type.cat2))
+
       this.types = types as IActiveType[]
     }))
   }
