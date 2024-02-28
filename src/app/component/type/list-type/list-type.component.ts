@@ -8,8 +8,6 @@ import { TypeService } from '../../../service/microservice/type.service';
 import { map } from 'rxjs';
 import { removeDuplicates } from '../../../../util/transform';
 import { BlogService } from '../../../service/microservice/blog.service';
-
-
 @Component({
   selector: 'sr-list-type',
   standalone: true,
@@ -18,17 +16,17 @@ import { BlogService } from '../../../service/microservice/blog.service';
   styleUrl: './list-type.component.scss'
 })
 export class ListTypeComponent {
-editType(arg0: string) {
-throw new Error('Method not implemented.');
-}
-deleteType(arg0: string) {
-  this.typeService.delete(arg0).subscribe(() => this.types$.subscribe(types => {
-    this.cat1Data = removeDuplicates(types.map((type: IType) => type.cat1))    
-    this.cat2Data = removeDuplicates(types.map((type: IType) => type.cat2))
-    this.types = types as IActiveType[]
-  }))
-}
-  constructor(private activatedRoute: ActivatedRoute,private blogService : BlogService, private typeService: TypeService) { }
+  editType(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
+  deleteType(arg0: string) {
+    this.typeService.delete(arg0).subscribe(() => this.types$.subscribe(types => {
+      this.cat1Data = removeDuplicates(types.map((type: IType) => type.cat1))
+      this.cat2Data = removeDuplicates(types.map((type: IType) => type.cat2))
+      this.types = types as IActiveType[]
+    }))
+  }
+  constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService, private typeService: TypeService) { }
   cat1Data !: string[]
   cat2Data !: (string | undefined)[]
   _showDescription: boolean = false
@@ -37,13 +35,17 @@ deleteType(arg0: string) {
   ngOnInit() {
     this.activatedRoute.data.subscribe(
       ({ types }) => {
-        this.types = types.result.map((type: IActiveType) => {
-          type.classes = []
-          this.blogService.count(type._id).subscribe((blogCount: number) => {
-            type.blogCount = blogCount;
+
+        this.cat1Data = removeDuplicates(types.result.map((type: IType) => type.cat1)),
+          this.cat2Data = removeDuplicates(types.result.map((type: IType) => type.cat2)),
+
+          this.types = types.result.map((type: IActiveType) => {
+            type.classes = []
+            this.blogService.count(type._id).subscribe((blogCount: number) => {
+              type.blogCount = blogCount;
+            });
+            return type;
           });
-          return type;
-        });
         this.pagination = types.pagination;
       });
   }
@@ -56,7 +58,6 @@ deleteType(arg0: string) {
       return type
     })
   }
-
 
   types$ = this.typeService.all().pipe(
     map((types: IType[]) => {
@@ -76,9 +77,8 @@ deleteType(arg0: string) {
 
   handleOnSubmit(formdata: any) {
     this.typeService.post(JSON.parse(formdata)).subscribe(() => this.types$.subscribe(types => {
-      this.cat1Data = removeDuplicates(types.map((type: IType) => type.cat1))    
+      this.cat1Data = removeDuplicates(types.map((type: IType) => type.cat1))
       this.cat2Data = removeDuplicates(types.map((type: IType) => type.cat2))
-
       this.types = types as IActiveType[]
     }))
   }
