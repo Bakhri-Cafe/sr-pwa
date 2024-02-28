@@ -1,7 +1,9 @@
 <form [formGroup]="organisationForm" (ngSubmit)="handleOnSubmit()">
     <floating-input [CONTROL]='organisationForm.controls["name"]' [CONSTANTS]="ORGANISATION_CONSTANT.name" />
-    <floating-input [CONTROL]='organisationForm.controls["logo"]' [CONSTANTS]="ORGANISATION_CONSTANT.logo" />
-    <sr-floating-textarea  [CONTROL]="organisationForm.controls['description']"
+    <sr-floating-select [selectedItem]="selectedFile" (selectItemEmmiter)="handleSelectItemEmmiter($event)"
+        [data]="filesDta$ | async" [CONTROL]='organisationForm.controls["logo"]'
+        [CONSTANTS]="ORGANISATION_CONSTANT.logo" />
+    <sr-floating-textarea [CONTROL]="organisationForm.controls['description']"
         [CONSTANTS]="ORGANISATION_CONSTANT.description" />
     <sr-floating-textarea [CONTROL]="organisationForm.controls['markdown']"
         [CONSTANTS]="ORGANISATION_CONSTANT.markdown" />

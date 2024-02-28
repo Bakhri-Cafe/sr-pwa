@@ -2,7 +2,11 @@
     <select (change)="changeEmitter($event)" class="form-select" [id]="CONSTANTS?.id" [ngClass]="CONSTANTS?.classes">
         <option selected disabled>Select ...</option>
         @for (item of data; track $index) {
-        <option [selected]="item._id === selectedItem._id" [value]="item.id">{{item.title || item.name}}</option>
+
+        <option [selected]="item._id === selectedItem?._id"
+            [value]="item._id">
+            {{item.title ?? item.name}}
+        </option>
         }
     </select>
     <label [for]="CONSTANTS?.id">{{CONSTANTS?.placeholder}}</label>

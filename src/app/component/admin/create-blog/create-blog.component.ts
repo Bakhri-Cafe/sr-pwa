@@ -71,6 +71,9 @@ export class CreateBlogComponent {
     if(this.blog_id){
       this.blogService.put(this.blog_id, { ...this.blogForm.value, tags, type, organisation }).subscribe(res => console.log('res', res))
     }else{
+      alert(tags)
+      alert(type)
+      alert(organisation)
       this.blogService.post({ ...this.blogForm.value, tags, type, organisation }).subscribe(res => console.log('res', res))
     }
   }
@@ -81,9 +84,11 @@ export class CreateBlogComponent {
     this.selectedTags = JSON.parse($event)
   }
   handleTypeChangeEmitter($event: any) {
+    console.log($event)
     this.selectedType = JSON.parse($event)
   }
   handleOrganisationChangeEmitter($event: any) {
+    alert($event)
     this.selectedOrganisation = JSON.parse($event)
   }
 }

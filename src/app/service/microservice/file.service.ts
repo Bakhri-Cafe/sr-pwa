@@ -9,6 +9,9 @@ import { environment } from '../../../environments/environment';
 })
 export class FileService {
   constructor(private http: HttpClient) { }
+  all() {
+    return this.http.get<IFile[]>(`${environment.filePath}/get/all`)
+  }
   getAll(filterCriteria: string): Observable<{ models: IFile[], pagination: IPagination }> {
     return this.http.get<{ models: IFile[], pagination: IPagination }>(`${environment.filePath}/?${filterCriteria}`);
   }
