@@ -21,7 +21,6 @@ export class FloatingSelectComponent {
   @Output() selectItemEmmiter = new EventEmitter();
 
   changeEmitter($event: any) {
-    alert('emitting' + JSON.stringify($event))
     this.selectItemEmmiter.emit(JSON.stringify(this.data.filter((x: any) => x._id === $event.target.value)[0]))
   }
 }

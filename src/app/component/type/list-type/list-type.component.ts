@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { CreateTypeComponent } from '../create-type/create-type.component';
 import { ActivatedRoute } from '@angular/router';
 import { IActiveType, IPagination, IType } from '../../../../util/dataModel';
@@ -8,14 +8,17 @@ import { TypeService } from '../../../service/microservice/type.service';
 import { map } from 'rxjs';
 import { removeDuplicates } from '../../../../util/transform';
 import { BlogService } from '../../../service/microservice/blog.service';
+import { HumanRedableDatePipe } from '../../../pipe/human-redable-date.pipe';
+import { ToastService } from '../../../service/toast.service';
 @Component({
   selector: 'sr-list-type',
   standalone: true,
-  imports: [CreateTypeComponent, NgClass, ModalComponent],
+  imports: [CreateTypeComponent, NgClass, ModalComponent, HumanRedableDatePipe],
   templateUrl: './list-type.component.html',
   styleUrl: './list-type.component.scss'
 })
 export class ListTypeComponent {
+  @ViewChild(ModalComponent) modalComponent !: ModalComponent;
   editType(arg0: string) {
     throw new Error('Method not implemented.');
   }
@@ -26,7 +29,7 @@ export class ListTypeComponent {
       this.types = types as IActiveType[]
     }))
   }
-  constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService, private typeService: TypeService) { }
+  constructor(private toastService: ToastService, private activatedRoute: ActivatedRoute, private blogService: BlogService, private typeService: TypeService) { }
   cat1Data !: string[]
   cat2Data !: (string | undefined)[]
   _showDescription: boolean = false
@@ -81,5 +84,14 @@ export class ListTypeComponent {
       this.cat2Data = removeDuplicates(types.map((type: IType) => type.cat2))
       this.types = types as IActiveType[]
     }))
+    this.triggerClosePopupHandle()
+    this.toastService.showSuccessToast('Success', 'Type created successfully');
+  }
+
+  triggerClosePopupHandle() {
+    this.modalComponent.close()
+  }
+  triggerOpenPopupHandle() {
+    this.modalComponent.open()
   }
 }

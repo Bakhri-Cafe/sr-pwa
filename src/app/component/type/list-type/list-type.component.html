@@ -7,7 +7,7 @@
       <th scope="col">Description</th>
       <th scope="col">Created At</th>
       <th scope="col">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addType">Primary
+        <button type="button" class="btn btn-outline-primary" (click)="triggerOpenPopupHandle()">Primary
           <i class="bi bi-plus-circle"></i>
         </button>
       </th>
@@ -20,7 +20,7 @@
       <td>{{type.cat1}}</td>
       <td>{{type.cat2}}</td>
       <td>{{type.description}}</td>
-      <td>{{type.createdAt}} </td>
+      <td>{{type.createdAt | humanRedableDate}} </td>
       <td class="d-flex justify-content-around align-items-start">
         <button class="bi bi-archive-fill bg-danger" (click)="deleteType(type._id)" [disabled]="type.blogCount"></button>
         <button class="bi bi-pencil-square bg-info" (click)="editType(type._id)"></button>
@@ -32,5 +32,5 @@
 
 
 <sr-modal modelId='addType' title="Add Types">
-  <sr-create-type (submitForm)="handleOnSubmit($event)" [cat1Data]="cat1Data" [cat2Data]="cat2Data"/>
+  <sr-create-type (triggerClosePopup)="triggerClosePopupHandle()" (submitForm)="handleOnSubmit($event)" [cat1Data]="cat1Data" [cat2Data]="cat2Data"/>
 </sr-modal>

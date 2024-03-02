@@ -1,6 +1,6 @@
 <div class="card file"  >
     <img [src]="file.path" class="card-img-top" [alt]="file.description" [routerLink]="['file', file._id]">
-    <i class="i-copy-md" (click)="copyImagePath(file.path)"></i>
+    <i class="bi bi-clipboard i-copy-md" (click)="copyImagePath(file.path)"></i>
     <div class="card-body">
         <i class="bi bi-info-circle-fill me-1" [title]="file.description"></i><span class="card-title" [routerLink]="['file', file._id]">{{file.name}}</span>
     </div>

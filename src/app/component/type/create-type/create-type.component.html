@@ -7,7 +7,7 @@
             <div class="search-result-container">
                 <ul class="list-group search-result">
                     @for (item of cat1DataSearch; track $index) {
-                    <li class="list-group-item">{{item}}</li>
+                    <li class="list-group-item search-item cursor-pointer" (click)="selectCat1(item)">{{item}}</li>
                     }
                 </ul>
             </div>
@@ -15,12 +15,13 @@
         <div class="col-md-6">
             <floating-input (keyPressEmitter)="handleCat2keyPress($event)" [CONTROL]='typeForm.controls["cat2"]'
                 [CONSTANTS]="CREATE_BLOG_CONST.cat2" />
-
-            <ul class="list-group">
-                @for (item of cat2DataSearch; track $index) {
-                <li class="list-group-item">{{item}}</li>
-                }
-            </ul>
+            <div class="search-result-container">
+                <ul class="list-group search-result">
+                    @for (item of cat2DataSearch; track $index) {
+                    <li class="list-group-item search-item cursor-pointer" (click)="selectCat2(item)">{{item}}</li>
+                    }
+                </ul>
+            </div>
         </div>
     </div>
     <sr-floating-textarea [CONTROL]='typeForm.controls["description"]' [CONSTANTS]="CREATE_BLOG_CONST.description" />
