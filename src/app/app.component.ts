@@ -14,7 +14,7 @@ import { ToastService } from './service/toast.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ ToastComponent, CommonModule, RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
+  imports: [ToastComponent, CommonModule, RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -38,9 +38,12 @@ export class AppComponent {
     this.router.events
       .pipe(
         map((e) => {
-          if ( e instanceof NavigationStart || e instanceof NavigationEnd) {
+          if (e instanceof NavigationStart || e instanceof NavigationEnd) {
             this.loading = true;
             this.loadingPercentage = 0;
+          }
+          if (e instanceof NavigationEnd) {
+            window.scrollTo(0, 0)
           }
         })
       )
@@ -48,8 +51,8 @@ export class AppComponent {
         this.loadingPercentage = Math.floor(this.loadingPercentage + (100 / 11))
       });
 
-      this.toastService.toastEvents.subscribe((e) => {
-        this.toasts.push({...e, show: true});
-      })
+    this.toastService.toastEvents.subscribe((e) => {
+      this.toasts.push({ ...e, show: true });
+    })
   }
 }
